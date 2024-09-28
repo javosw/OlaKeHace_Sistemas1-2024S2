@@ -13,17 +13,16 @@ entregables
 roles
 	administrador
 		sinonimos: moderador, moderator
-		actividades
-			<<publica>> eventos del publicador
-				aprueba/rechaza dichos eventos
-			elimina/oculta publicaciones reportadas
+		vistas
+			aprobar/rechazar la publicacion de eventos
+			eliminar publicaciones denunciadas
 			notificaciones
 				por cada evento por aprobar
 				por cada publicacion denunciada
 	publicador
 		sinonimos: publisher
-		entidad (persona,empresa) con un usuario
-		actividades
+		entidad con un username
+		vistas
 			<<crea>> eventos
 			@administrador: un evento es publicado si es aprobado por el administrador
 			publicar sin aprobacion
@@ -36,7 +35,7 @@ roles
 				y si logra un evento eliminado
 	registrado
 		sinonimos: denunciador
-		actividades
+		vistas
 			notificaciones
 				por cada evento por asistir
 					.conteo_regresivo()
@@ -45,7 +44,8 @@ roles
 				.motivos_de_denuncia[]
 	visitante
 		sinonimos: no registrado, anonimo
-		visualiza eventos
+		vistas
+			eventos
 
 evento
 	.nombre
@@ -71,11 +71,14 @@ aclaraciones
 	registrado vs no registrado
 		el registrado puede denunciar publicaciones
 		el no registrado no puede denunciar publicaciones
+	roles con username
+		denunciador
+		publicador
+	un denunciador puede ser un publicador
 
 b--------------------------------------------------
-dudas
-	que roles pueden registrarse
-		cada administrador|publicador debe registrarse?
-	un registrado puede publicar o solo denunciar?
-	@dudas1: que roles puede tener un usuario?
 
+dudas
+	se puede agregar un rol administrador?
+		@josq: no, en caso si, deberia tener aprobacion de un administrador
+		
