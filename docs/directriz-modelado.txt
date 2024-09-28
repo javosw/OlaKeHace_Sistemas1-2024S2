@@ -1,37 +1,51 @@
 entregables
-	fecha 1: jueves-3nov2024
+	(fecha 1) jueves-3nov2024
 		diagrama de paquetes
 		diagrama de secuencia
 		diagrama de despliegue
 		diagrama de base de datos
 			alternativas
-				diagrama de tablas (nomenclatura de workbeanch) 
+				diagrama de tablas (nomenclatura de workbench) 
 				diagrama entidad-relacion 
-	fecha 2:
-
+	(fecha 2)
+	(fecha 3) jueves-31octubre2024
+		
 roles
 	administrador
 		sinonimos: moderador, moderator
-		@publicador: valida eventos del publicador para su publicacion
-		elimina publicaciones reportadas
-		notificaciones
-			por cada evento por aprobar
-			por cada publicacion denunciada
+		actividades
+			<<publica>> eventos del publicador
+				aprueba/rechaza dichos eventos
+			elimina/oculta publicaciones reportadas
+			notificaciones
+				por cada evento por aprobar
+				por cada publicacion denunciada
 	publicador
 		sinonimos: publisher
-		.moderador
 		entidad (persona,empresa) con un usuario
-		publica eventos
-		@administrador: un evento es publicado si es aprobado por el administrador
+		actividades
+			<<crea>> eventos
+			@administrador: un evento es publicado si es aprobado por el administrador
+			publicar sin aprobacion
+				se habilita
+					si alcanza 2 eventos consecutivos aprobados
+				se deshabilita
+					si logra un evento eliminado
+			denegado para publicar
+				si nunca ha tenido habilitada la publicacion sin aprobacion
+				y si logra un evento eliminado
 	registrado
-		@dudas2: sinonimos: denunciador
+		sinonimos: denunciador
+		actividades
+			notificaciones
+				por cada evento por asistir
+					.conteo_regresivo()
+					@eventos_board cada evento debe tener un boton "deseo asistir"
+			denunciar evento
+				.motivos_de_denuncia[]
 	visitante
 		sinonimos: no registrado, anonimo
 		visualiza eventos
-
-notificaciones
-	para usuarios
-		@dudas1
 
 evento
 	.nombre
@@ -45,16 +59,23 @@ evento
 	.hora
 	.cupo
 	.url
+	.administrador
 
+publicacion
+	.evento
+	.reportes
+	actividades
+		si reportes >= 3: <<ocultar>> publicacion
 
+aclaraciones
+	registrado vs no registrado
+		el registrado puede denunciar publicaciones
+		el no registrado no puede denunciar publicaciones
 
 b--------------------------------------------------
 dudas
-	diferencia entre un registrado y no registrado?
-		que puede hacer uno que no el otro?
-		@dudas2: @josq: el registrado puede reportar publicaciones, el visitante no
 	que roles pueden registrarse
 		cada administrador|publicador debe registrarse?
-	un registrado puede publicar?
+	un registrado puede publicar o solo denunciar?
 	@dudas1: que roles puede tener un usuario?
 
