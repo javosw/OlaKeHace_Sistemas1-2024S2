@@ -8,14 +8,14 @@
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "okh",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/okh",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
+            "index": "src/app/okh-meta/index.html",
+            "browser": "src/app/okh-meta/main.ts",
             "polyfills": [
               "zone.js"
             ],
