@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { ToggleState } from '../../../okh-data/user.data';
-import { asapScheduler } from 'rxjs';
+import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'okh-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
+
+  constructor(private router:Router){
+  }
 
   flag_actual:ToggleState = { state: false };
 
@@ -27,4 +30,7 @@ export class NavbarComponent {
     this.flag_actual = toggle;
   }
 
+  navigate(path:string){
+    this.router.navigate([path]);
+  }
 }

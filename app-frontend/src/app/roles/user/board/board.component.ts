@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'okh-board',
   standalone: true,
-  imports: [NavbarComponent],
+  imports: [RouterLink, RouterOutlet, NavbarComponent],
   templateUrl: './board.component.html',
 })
 export class BoardComponent {
