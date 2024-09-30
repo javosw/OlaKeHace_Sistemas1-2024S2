@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  tieneSesion: BehaviorSubject<boolean>;
+  hasSession: BehaviorSubject<boolean>;
 
   constructor(private http: HttpClient, private router: Router) {
-    this.tieneSesion = new BehaviorSubject(false);
+    this.hasSession = new BehaviorSubject(false);
   }
 
   addSession(form: EntrarForm):Observable<EntrarApi> {

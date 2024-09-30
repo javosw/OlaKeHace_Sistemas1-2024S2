@@ -23,29 +23,31 @@ roles
 		sinonimos: publisher
 		entidad con un username
 		vistas
-			<<crea>> eventos
-			@administrador: un evento es publicado si es aprobado por el administrador
-			publicar sin aprobacion
-				se habilita
-					si alcanza 2 eventos consecutivos aprobados
-				se deshabilita
-					si logra un evento eliminado
-			denegado para publicar
-				si nunca ha tenido habilitada la publicacion sin aprobacion
-				y si logra un evento eliminado
+			add evento
+				un evento es <<publicado>> si es aprobado por el administrador
+				publicar sin aprobacion
+					se habilita
+						si alcanza 2 eventos consecutivos aprobados
+					se deshabilita
+						si logra un evento eliminado
+				denegado para publicar
+					si nunca ha tenido habilitada la publicacion sin aprobacion
+					y si logra un evento eliminado
 	registrado
 		sinonimos: denunciador
 		vistas
 			notificaciones
 				por cada evento por asistir
 					.conteo_regresivo()
-					@eventos_board cada evento debe tener un boton "deseo asistir"
-			denunciar evento
-				.motivos_de_denuncia[]
+			get eventos
+				asistir
+				denunciar
+					.motivos_de_denuncia[]
+				filtracion por hashtag
 	visitante
 		sinonimos: no registrado, anonimo
 		vistas
-			eventos
+			get eventos
 
 evento
 	.nombre

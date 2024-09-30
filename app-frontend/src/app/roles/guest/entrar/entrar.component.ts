@@ -17,7 +17,7 @@ export class EntrarComponent {
   flag_fueFormEnviado: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private authService:AuthService, private router:Router) {
-    this.authService.tieneSesion.subscribe((val)=>{this.flag_tieneSesion = val;});
+    this.authService.hasSession.subscribe((val)=>{this.flag_tieneSesion = val;});
     this.form_entrar = this.formBuilder.group({
       username: [''],
       password: [''],
@@ -33,7 +33,7 @@ export class EntrarComponent {
     this.authService.addSession(this.form_entrar.value as EntrarForm).subscribe({
       next: (value: EntrarApi) => {
         this.flag_fueFormEnviado = true;
-        this.authService.tieneSesion.next(true);
+        this.authService.hasSession.next(true);
 
         if (value.rol == 'admin') {
           this.router.navigate([api_admin_board]);
@@ -44,7 +44,8 @@ export class EntrarComponent {
       },
       error: (error) => {
         this.flag_fueFormEnviado = true;
-        this.authService.tieneSesion.next(false);
+        //this.authService.hasSession.next(false); @test(add)
+        this.authService.hasSession.next(true); // @test(del)
       }
     });
   }

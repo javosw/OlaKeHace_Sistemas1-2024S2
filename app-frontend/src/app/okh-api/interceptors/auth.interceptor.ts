@@ -14,7 +14,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
       if (error.status === 401 && req.url !== api_entrar) {
         router.navigate(['entrar']);
-        auth.tieneSesion.next(false);
+        //auth.hasSession.next(false); @test(add)
+        auth.hasSession.next(true); // @test(del)
       }
 
       return throwError(() => error);

@@ -1,0 +1,11 @@
+<ul class="nav nav-underline bg-secondary-subtle justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active':flag_getEventos.state}" (click)="toggleActive(flag_getEventos)">Eventos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active':flag_addEvento.state}" (click)="toggleActive(flag_addEvento)">Agregar evento</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active':flag_getNotifs.state}" (click)="toggleActive(flag_getNotifs)">Notificaciones</a>
+    </li>
+</ul>
