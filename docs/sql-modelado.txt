@@ -1,0 +1,41 @@
+Eventos
+	id_evento:integer
+	nombre:string
+	lugar:string
+	descripcion:string
+	fecha:date
+	hora:date
+	url:string
+	fue_aprobado:bool
+	tiene_denuncia:bool
+	eliminar:bool
+	ocultar:bool
+	cupo:integer
+	cupo_ocupado:integer
+	id_administrador
+
+Denuncias	
+	id_evento
+	username:string
+	fecha:date
+
+Usuarios
+	id_usuario
+	eventos_aprobados
+	eventos_eliminados
+	eventos_publicados
+	esta_denegado
+
+Asistencias
+	Eventos.id_evento
+	Usuarios.id_usuario
+
+EventoEtiquetas
+	id_evento
+	etiqueta
+	
+Administradores
+	id_administrador
+	username:string
+	password:string
+	

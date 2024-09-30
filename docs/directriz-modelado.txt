@@ -1,5 +1,5 @@
 entregables
-	(fecha 1) jueves-3nov2024
+	(fecha 1) lunes-7nov2024
 		diagrama de paquetes
 		diagrama de secuencia
 		diagrama de despliegue
@@ -7,7 +7,7 @@ entregables
 			alternativas
 				diagrama de tablas (nomenclatura de workbench) 
 				diagrama entidad-relacion 
-	(fecha 2)
+	(fecha 2) jueves-17nov2024
 	(fecha 3) jueves-31octubre2024
 		
 roles
@@ -15,21 +15,29 @@ roles
 		sinonimos: moderador, moderator
 		vistas
 			aprobar/rechazar la publicacion de eventos
+				.fue_aprobado
 			eliminar publicaciones denunciadas
+				.tiene_denuncia
+				.{username,fecha}[]
 			notificaciones
 				por cada evento por aprobar
+					.tiene_aprobacion
 				por cada publicacion denunciada
+					.tiene_denuncia
 	publicador
 		sinonimos: publisher
-		entidad con un username
 		vistas
 			add evento
 				un evento es <<publicado>> si es aprobado por el administrador
+					.fue_aprobado
 				publicar sin aprobacion
 					se habilita
 						si alcanza 2 eventos consecutivos aprobados
+							.eventos_publicados
+							.eventos_aprobados
 					se deshabilita
 						si logra un evento eliminado
+							.eventos_eliminados
 				denegado para publicar
 					si nunca ha tenido habilitada la publicacion sin aprobacion
 					y si logra un evento eliminado
@@ -39,11 +47,16 @@ roles
 			notificaciones
 				por cada evento por asistir
 					.conteo_regresivo()
+					.fecha
+					.cupo_ocupado
 			get eventos
 				asistir
+					.asistir()
 				denunciar
+					.denunciar()
 					.motivos_de_denuncia[]
 				filtracion por hashtag
+					.etiqueta
 	visitante
 		sinonimos: no registrado, anonimo
 		vistas
@@ -83,4 +96,3 @@ b--------------------------------------------------
 dudas
 	se puede agregar un rol administrador?
 		@josq: no, en caso si, deberia tener aprobacion de un administrador
-		
