@@ -1,0 +1,30 @@
+<div class="container p-5">
+    <form [formGroup]="form_entrar" (ngSubmit)="onSubmit()" class="mb-3">
+        <div class="row mb-3">
+            <div class="col-12 col-md-2">
+                <label for="username" class="form-label">Usuario</label>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" formControlName="username">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 col-md-2">
+                <label for="password" class="form-label">Contraseña</label>
+            </div>
+            <div class="col">
+                <input type="password" class="form-control" formControlName="password">
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-sm btn-outline-primary">ENTRAR</button>
+        </div>
+    </form>
+
+    @if (!flag_tieneSesion && flag_fueFormEnviado) {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        Sin autenticacion. <u class="alert-link">Intentelo de nuevo</u>.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    }
+</div>

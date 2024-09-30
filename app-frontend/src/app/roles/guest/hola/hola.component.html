@@ -1,0 +1,9 @@
+<okh-navbar (quiereEntrar)="flag_quiereEntrar = $event"></okh-navbar>
+
+@if (!flag_quiereEntrar) {
+<okh-carousel></okh-carousel>
+
+}
+@else {
+    <okh-entrar></okh-entrar>
+}

@@ -1,1 +1,12 @@
-<p>okh works!</p>
+<!-- 
+@if(tieneSesion){ 
+@if(tieneSesion || true){ 
+-->
+
+@if(tieneSesion){
+
+<router-outlet></router-outlet>
+}
+@else{
+<okh-hola></okh-hola>
+}
