@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../../okh-api/services/auth.service';
 import { EntrarApi, EntrarForm } from '../../../okh-data/auth.data';
 import { Router } from '@angular/router';
-import { api_admin_board, api_user_board } from '../../../okh-api/routes/okh.api';
+import { path_AdminBoard, path_UserBoard } from '../../../okh-meta/paths';
 
 @Component({
   selector: 'okh-entrar',
@@ -36,10 +36,10 @@ export class EntrarComponent {
         this.authService.hasSession.next(true);
 
         if (value.rol == 'admin') {
-          this.router.navigate([api_admin_board]);
+          this.router.navigate([path_AdminBoard]);
         }
         else if (value.rol == 'user') {
-          this.router.navigate([api_user_board]);
+          this.router.navigate([path_UserBoard]);
         }
       },
       error: (error) => {

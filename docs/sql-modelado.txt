@@ -1,41 +1,46 @@
 Eventos
-	id_evento:integer
+	[PK] id_evento:integer
 	nombre:string
 	lugar:string
-	descripcion:string
 	fecha:date
 	hora:date
+	plazas:integer
+	plazas_ocupadas:integer
+	descripcion:string
 	url:string
-	fue_aprobado:bool
-	tiene_denuncia:bool
-	eliminar:bool
-	ocultar:bool
-	cupo:integer
-	cupo_ocupado:integer
-	id_administrador
-
-Denuncias	
-	id_evento
-	username:string
-	fecha:date
-
-Usuarios
-	id_usuario
-	eventos_aprobados
-	eventos_eliminados
-	eventos_publicados
-	esta_denegado
+	
+EventoEtiquetas
+	[PK,UK] Eventos.id_evento
+	[UK] etiqueta:string
 
 Asistencias
 	Eventos.id_evento
-	Usuarios.id_usuario
+	Clientes.username
 
-EventoEtiquetas
-	id_evento
-	etiqueta
-	
+EventosAdmin
+	[PK] Eventos.id_evento
+	fue_aprobado:bool
+	fue_denunciado:bool
+	debe_eliminarse:bool
+	debe_ocultarse:bool
+
+Denuncias
+	[PK] Eventos.id_evento
+	Clientes.username
+	razon:string
+	//fecha:date
+	Administradores.username
+
+Usuarios
+	[PK] username
+	password
+
+Clientes
+	[PK] Usuarios.username
+	eventos_aprobados
+	eventos_eliminados
+	eventos_publicados
+	tiene_sancion
+
 Administradores
-	id_administrador
-	username:string
-	password:string
-	
+	[PK] Usuarios.username

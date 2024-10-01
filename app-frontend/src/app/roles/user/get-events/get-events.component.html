@@ -1,1 +1,5 @@
-<p>get-events works!</p>
+<div class="container">
+    @for (event of data_events; track event.id_evento) {
+        <okh-event [event]="event"></okh-event>
+    }
+</div>

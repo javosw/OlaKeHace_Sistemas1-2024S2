@@ -1,1 +1,26 @@
-<p>get-event works!</p>
+<div class="container p-3 mb-3 border border-light-subtle">
+    <div class="row px-2 mb-2">
+        <div class="col-5">
+            <h6>{{event.nombre}}</h6>
+        </div>
+        <div class="col-7">
+            <h6>{{event.fecha}} {{event.hora}} | {{event.lugar}}</h6>
+        </div>
+    </div>
+    <div class="container p-3 mb-2 border-top border-bottom">
+        {{event.descripcion}}
+    </div>
+    <div class="row">
+        <div class="col">
+            @for (tag of event.etiquetas; track $index) {
+                <a class="link" [routerLink]="['/user','events','get']" [queryParams]="{tag:tag}">#{{tag}}</a>&nbsp;
+            }
+        </div>
+        <div class="col-3">{{event.plazas_ocupadas}} / {{event.plazas}}</div>
+    </div>
+</div>
+
+<!--
+<div class="WMWMWMWMW">
+</div>
+-->
