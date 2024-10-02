@@ -14,3 +14,12 @@ export type GetEvent = {
 	url:string
 	etiquetas:string[]
 }
+
+export type AddEventTo = {
+	id_evento:number;
+}
+
+export type AddComplaint = {
+	id_evento:number;
+	argumento:string;
+}

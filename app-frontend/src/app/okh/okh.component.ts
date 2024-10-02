@@ -13,11 +13,11 @@ export class OkhComponent {
   tieneSesion: boolean;
 
   constructor(private auth: AuthService) {
-    this.tieneSesion = this.auth.hasSession.value;
+    this.tieneSesion = this.auth.flag_hasSession.value;
   }
 
   ngOnInit(){
-    this.auth.hasSession.subscribe((val)=>{this.tieneSesion = val;});
+    this.auth.flag_hasSession.subscribe((val)=>{this.tieneSesion = val;});
   }
 
 }

@@ -27,7 +27,7 @@ EventosAdmin
 Denuncias
 	[PK] Eventos.id_evento
 	Clientes.username
-	razon:string
+	argumento:string
 	//fecha:date
 	Administradores.username
 

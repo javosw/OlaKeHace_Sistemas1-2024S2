@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { api_UserGetEvents } from '../routes/okh.api';
+import { api_UserAddAttendance, api_UserAddComplaint, api_UserGetEvents } from '../routes/okh.api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { GetEvent } from '../../okh-data/user.data';
+import { AddComplaint, AddEventTo, GetEvent } from '../../okh-data/user.data';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private router: Router) { }
-
+  constructor(private http: HttpClient, private router: Router, private authService:AuthService) { }
 
   events = [
     {
@@ -64,6 +64,21 @@ export class UserService {
     },
   ]
 
+  addDenuncia(id_event:number,argumento:string):Observable<any>{
+    let form:AddComplaint = { id_evento: id_event, argumento: argumento };
+
+    let url = api_UserAddComplaint;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(url,form,{headers:headers});
+  }
+
+  addAsistencia(id_event:number):Observable<any>{
+    let form:AddEventTo = { id_evento: id_event };
+
+    let url = api_UserAddAttendance;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(url,form,{headers:headers});
+  }
 
   getEvents(): Observable<GetEvent[]> {
     return of(this.events);

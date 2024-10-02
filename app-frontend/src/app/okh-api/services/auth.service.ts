@@ -11,10 +11,11 @@ import { GetEvent } from '../../okh-data/user.data';
 })
 export class AuthService {
 
-  hasSession: BehaviorSubject<boolean>;
+  flag_hasSession: BehaviorSubject<boolean>;
+  data_session: EntrarApi = {username:'',rol:''};
 
   constructor(private http: HttpClient, private router: Router) {
-    this.hasSession = new BehaviorSubject(false);
+    this.flag_hasSession = new BehaviorSubject(false);
   }
 
   addSession(form: EntrarForm):Observable<EntrarApi> {

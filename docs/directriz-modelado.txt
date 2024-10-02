@@ -90,9 +90,5 @@ aclaraciones
 		denunciador
 		publicador
 	un denunciador puede ser un publicador
-
-b--------------------------------------------------
-
-dudas
-	se puede agregar un rol administrador?
-		@josq: no, en caso si, deberia tener aprobacion de un administrador
+	agregar un administrador
+		para realizar esta operacion se pide username y password de un administrador
