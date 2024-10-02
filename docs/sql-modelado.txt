@@ -7,28 +7,31 @@ Eventos
 	plazas:integer
 	plazas_ocupadas:integer
 	descripcion:string
-	url:string
+	link:string
 	
-EventoEtiquetas
+EtiquetasEvento
 	[PK,UK] Eventos.id_evento
 	[UK] etiqueta:string
 
-Asistencias
+AsistenciasEvento
 	Eventos.id_evento
 	Clientes.username
 
-EventosAdmin
+RevisionesPorRutina
 	[PK] Eventos.id_evento
-	fue_aprobado:bool
-	fue_denunciado:bool
-	debe_eliminarse:bool
-	debe_ocultarse:bool
+	fue_revisado:bool
+	fue_eliminado:bool
 
 Denuncias
 	[PK] Eventos.id_evento
+	conteo_denuncias:number
+	fue_eliminado:bool
+
+RevisionesPorDenuncia
+	[PK] Eventos.id_evento
 	Clientes.username
 	argumento:string
-	//fecha:date
+	fue_revisado:bool
 	Administradores.username
 
 Usuarios

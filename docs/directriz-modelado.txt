@@ -14,16 +14,18 @@ roles
 	administrador
 		sinonimos: moderador, moderator
 		vistas
-			aprobar/rechazar la publicacion de eventos
-				.fue_aprobado
-			eliminar publicaciones denunciadas
-				.tiene_denuncia
-				.{username,fecha}[]
 			notificaciones
-				por cada evento por aprobar
-					.tiene_aprobacion
-				por cada publicacion denunciada
-					.tiene_denuncia
+				revision de evento por rutina
+					por cada evento por agregado
+				revision de evento por denuncia
+					por cada evento denunciado
+			revision de evento por rutina
+				.fue_revisado
+				.fue_eliminado
+			revision de evento por denuncia
+				.fue_revisado
+				.fue_eliminado
+				.{username,fecha}[]
 	publicador
 		sinonimos: publisher
 		vistas
