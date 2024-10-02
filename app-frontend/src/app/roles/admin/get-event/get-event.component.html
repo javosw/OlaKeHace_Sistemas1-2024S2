@@ -1,0 +1,41 @@
+<div class="container p-3 mb-3 border border-info-subtle">
+    <div class="row px-2 mb-2">
+        <div class="col-4">
+            <h6>{{event.nombre}}</h6>
+        </div>
+        <div class="col-8">
+            <h6>{{event.fecha}} {{event.hora}} | {{event.lugar}}</h6>
+        </div>
+    </div>
+    <div class="container p-3 mb-3 border-top border-bottom">
+        <p class="text-start">{{event.descripcion}}</p>
+        <div class="text-end">
+            @for (tag of event.etiquetas; track $index) {
+            <a class="link" [routerLink]="['/user','events','get']" [queryParams]="{tag:tag}">#{{tag}}</a>&nbsp;
+            }
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <div>
+            {{event.plazas_ocupadas}} / {{event.plazas}}
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <button type="button" (click)="addReview(false)" class="btn btn-sm btn-outline-danger">PUBLICAR</button>
+        <button type="button" (click)="addReview(true)" class="btn btn-sm btn-outline-danger">ELIMINAR</button>
+    </div>
+    @if(flag_addReviewSolicitada && flag_addReviewExitoso){
+    <div class="container bg-primary-subtle p-3 mt-3">
+        Revision agregada exitosamente.
+    </div>
+    }
+    @else if(flag_addReviewSolicitada && !flag_addReviewExitoso){
+    <div class="container bg-danger-subtle px-3 pt-3 pb-1 mt-3">
+        Ha habido algun error al intentar agregar su <u>revision</u>, posibles razones:
+        <ul>
+            <li>La revision ya ha sido agregada.</li>
+            <li>Fallo de conexion con el servidor o en el servidor.</li>
+        </ul>
+    </div>
+    }
+</div>

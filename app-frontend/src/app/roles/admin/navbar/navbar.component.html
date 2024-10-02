@@ -1,0 +1,8 @@
+<ul class="nav nav-underline bg-secondary-subtle justify-content-center mb-3">
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/admin/events']" [ngClass]="{'active':flag_getEventos.state}" (click)="toggleActive(flag_getEventos)">Eventos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/admin/complaints']" [ngClass]="{'active':flag_getComplaints.state}" (click)="toggleActive(flag_getComplaints)">Denuncias</a>
+    </li>
+</ul>
