@@ -23,3 +23,14 @@ export type AddComplaint = {
 	id_evento:number;
 	argumento:string;
 }
+
+export type AddEvent = {
+	nombre:string
+	lugar:string
+	fecha:string
+	hora:string
+	plazas:number
+	descripcion:string
+	url:string
+	etiquetas:string[]
+}

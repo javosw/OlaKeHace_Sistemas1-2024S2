@@ -21,8 +21,6 @@ export class GetEventsComponent {
     this.getEvents();
   }
 
-
-
   getEvents(){
     this.userService.getEvents().subscribe({
       next: (value: GetEvent[]) => {

@@ -1,1 +1,41 @@
-<p>add-event works!</p>
+<div class="container">
+    <h5>Agregar evento</h5>
+    <hr />
+    <div class="container mb-3">
+        <div class="row">
+            <label class="col-3 col-form-label">Nombre</label>
+            <input [(ngModel)]="input_event.nombre" class="col form-control bg-secondary-subtle" />
+        </div>
+        <div class="row">
+            <label class="col-3 col-form-label">Lugar</label>
+            <input [(ngModel)]="input_event.lugar" class="col form-control bg-secondary-subtle" />
+        </div>
+        <div class="row">
+            <label class="col-3 col-form-label">Fecha</label>
+            <input [(ngModel)]="input_event.fecha" class="col form-control bg-secondary-subtle" />
+        </div>
+        <div class="row">
+            <label class="col-3 col-form-label">Hora</label>
+            <input [(ngModel)]="input_event.hora" class="col form-control bg-secondary-subtle" />
+        </div>
+        <div class="row">
+            <label class="col-3 col-form-label">Plazas</label>
+            <input [(ngModel)]="input_event.plazas" class="col form-control bg-secondary-subtle" />
+        </div>
+        <div class="row">
+            <label class="col-3 col-form-label">Descripcion</label>
+            <textarea [(ngModel)]="input_event.descripcion" class="form-control col bg-secondary-subtle"></textarea>
+        </div>
+        <div class="row">
+            <label class="col-3 col-form-label">Link</label>
+            <input [(ngModel)]="input_event.url" class="col form-control bg-secondary-subtle" />
+        </div>
+        <div class="row">
+            <label class="col-3 col-form-label">Etiquetas</label>
+            <input [(ngModel)]="input_etiquetas" class="col form-control bg-secondary-subtle" />
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button (click)="addEvent()" class="btn btn-outline-primary">AGREGAR</button>
+    </div>
+</div>
