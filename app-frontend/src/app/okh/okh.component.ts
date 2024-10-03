@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { HolaComponent } from '../roles/guest/hola/hola.component';
-import { AuthService } from '../okh-api/services/auth.service';
+import { GuestService } from '../okh-api/services/guest.service';
 
 @Component({
   selector: 'okh',
@@ -12,7 +12,7 @@ import { AuthService } from '../okh-api/services/auth.service';
 export class OkhComponent {
   tieneSesion: boolean;
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: GuestService) {
     this.tieneSesion = this.auth.flag_hasSession.value;
   }
 

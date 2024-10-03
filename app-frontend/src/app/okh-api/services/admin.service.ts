@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { AuthService } from './auth.service';
+import { GuestService } from './guest.service';
 import { Router } from '@angular/router';
 import { api_AdminAddReviewRoutine, api_AdminGetComplaints, api_AdminGetEvents } from '../routes/okh.api';
 import { GetEvent } from '../../okh-data/user.data';
@@ -12,7 +12,7 @@ import { AddConplaintReview, AddEventReview, GetComplaint } from '../../okh-data
 })
 export class AdminService {
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
+  constructor(private http: HttpClient, private router: Router, private authService: GuestService) { }
   events = [
     {
       id_evento: 5,

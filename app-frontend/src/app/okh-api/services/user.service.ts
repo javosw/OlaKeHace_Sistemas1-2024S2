@@ -4,14 +4,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { AddComplaint, AddEventTo, GetEvent } from '../../okh-data/user.data';
-import { AuthService } from './auth.service';
+import { GuestService } from './guest.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private router: Router, private authService:AuthService) { }
+  constructor(private http: HttpClient, private router: Router, private authService:GuestService) { }
 
   events = [
     {

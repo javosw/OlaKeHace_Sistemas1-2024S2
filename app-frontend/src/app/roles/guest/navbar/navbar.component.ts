@@ -7,10 +7,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  @Output() quiereEntrar = new EventEmitter<boolean>;
+  @Output() input_view = new EventEmitter<string>;
 
-  emitQuiereEntrar(decicion:boolean){
-    this.quiereEntrar.emit(decicion);
+  emitView(decicion:string){
+    this.input_view.emit(decicion);
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../../okh-api/services/auth.service';
+import { GuestService } from '../../../okh-api/services/guest.service';
 import { EntrarApi, EntrarForm } from '../../../okh-data/auth.data';
 import { Router } from '@angular/router';
 import { path_AdminBoard, path_UserBoard } from '../../../okh-meta/paths';
@@ -16,7 +16,7 @@ export class EntrarComponent {
   flag_tieneSesion: boolean = false;
   flag_fueFormEnviado: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private authService:AuthService, private router:Router) {
+  constructor(private formBuilder: FormBuilder, private authService:GuestService, private router:Router) {
     this.authService.flag_hasSession.subscribe((val)=>{this.flag_tieneSesion = val;});
     this.form_entrar = this.formBuilder.group({
       username: [''],

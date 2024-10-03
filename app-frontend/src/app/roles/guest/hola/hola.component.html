@@ -1,9 +1,11 @@
-<okh-navbar (quiereEntrar)="flag_quiereEntrar = $event"></okh-navbar>
+<okh-navbar (input_view)="flag_view = $event"></okh-navbar>
 
-@if (!flag_quiereEntrar) {
+@if (flag_view == 'hola') {
 <okh-carousel></okh-carousel>
-
 }
-@else {
-    <okh-entrar></okh-entrar>
+@else if(flag_view == 'entrar') {
+<okh-entrar></okh-entrar>
+}
+@else if(flag_view == 'registro') {
+<okh-add-user></okh-add-user>
 }
