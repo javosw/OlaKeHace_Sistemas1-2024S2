@@ -19,10 +19,10 @@
         <div>
             {{event.plazas_ocupadas}} / {{event.plazas}}
         </div>
-    </div>
-    <div class="d-flex justify-content-between">
-        <button type="button" (click)="addReview(false)" class="btn btn-sm btn-outline-danger">PUBLICAR</button>
-        <button type="button" (click)="addReview(true)" class="btn btn-sm btn-outline-danger">ELIMINAR</button>
+        <div>
+            <button type="button" (click)="addReview(false)" class="btn btn-sm btn-outline-success me-3">PUBLICAR</button>
+            <button type="button" (click)="addReview(true)" class="btn btn-sm btn-outline-danger">ELIMINAR</button>
+        </div>    
     </div>
     @if(flag_addReviewSolicitada && flag_addReviewExitoso){
     <div class="container bg-primary-subtle p-3 mt-3">

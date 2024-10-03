@@ -5,7 +5,8 @@ import { GetEventsComponent as UserGetEvents } from '../roles/user/get-events/ge
 import { GetNotifsComponent as UserGetNotifs } from '../roles/user/get-notifs/get-notifs.component';
 import { BoardComponent as AdminBoard } from '../roles/admin/board/board.component';
 import { GetComplaintsComponent as AdminGetComplaints} from '../roles/admin/get-complaints/get-complaints.component';
-import { GetEventComponent as AdminGetEvents } from '../roles/admin/get-event/get-event.component';
+import { GetEventsComponent as AdminGetEvents } from '../roles/admin/get-events/get-events.component'; 
+
 export const routes: Routes = [
     { 
         path: 'user', 
