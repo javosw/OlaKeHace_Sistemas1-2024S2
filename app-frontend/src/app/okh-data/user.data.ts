@@ -21,7 +21,7 @@ export type AddEventTo = {
 
 export type AddComplaint = {
 	id_evento:number;
-	argumento:string;
+	motivo:string;
 }
 
 export type AddEvent = {

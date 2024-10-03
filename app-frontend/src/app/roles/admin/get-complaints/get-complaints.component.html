@@ -1,1 +1,5 @@
-<p>get-complaints works!</p>
+<div class="container">
+    @for (complaint of data_complaints; track complaint.event.id_evento) {
+        <okh-complaint [complaint]="complaint"></okh-complaint>
+    }
+</div>

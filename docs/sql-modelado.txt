@@ -9,28 +9,27 @@ Eventos
 	descripcion:string
 	link:string
 	
-EtiquetasEvento
+EventoEtiquetas
 	[PK,UK] Eventos.id_evento
-	[UK] etiqueta:string
+	[PK] etiqueta:string
 
-AsistenciasEvento
+EventoAsistencias
 	Eventos.id_evento
 	Clientes.username
+
+EventoDenuncias
+	[PK] Eventos.id_evento
+	conteo_denuncias:number
+	eliminar:bool
 
 RevisionesPorRutina
 	[PK] Eventos.id_evento
 	fue_revisado:bool
-	fue_eliminado:bool
-
-Denuncias
-	[PK] Eventos.id_evento
-	conteo_denuncias:number
-	fue_eliminado:bool
 
 RevisionesPorDenuncia
 	[PK] Eventos.id_evento
-	Clientes.username
-	argumento:string
+	[PK] Clientes.username
+	motivo:string
 	fue_revisado:bool
 	Administradores.username
 

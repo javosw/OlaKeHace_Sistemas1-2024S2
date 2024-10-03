@@ -26,8 +26,8 @@
     <div class="d-flex justify-content-between mt-3">
         <select class="form-select me-3" id="exampleSelect">
             <option selected disabled hidden>MOTIVO DE DENUNCIA</option>
-            @for(a of argumentos; track $index){
-            <option (click)="setArgumento(a)">{{a}}</option>
+            @for(a of motivos; track $index){
+            <option (click)="setMotivo(a)">{{a}}</option>
             }
         </select>
         <button type="button" (click)="addDenuncia()" class="btn btn-outline-danger">DENUNCIAR</button>

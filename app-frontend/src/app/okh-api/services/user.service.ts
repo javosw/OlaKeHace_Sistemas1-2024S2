@@ -64,8 +64,8 @@ export class UserService {
     },
   ]
 
-  addDenuncia(id_event:number,argumento:string):Observable<any>{
-    let form:AddComplaint = { id_evento: id_event, argumento: argumento };
+  addDenuncia(id_event:number,motivo:string):Observable<any>{
+    let form:AddComplaint = { id_evento: id_event, motivo: motivo };
 
     let url = api_UserAddComplaint;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

@@ -1,0 +1,41 @@
+<div class="container p-3 mb-3 border border-info-subtle">
+    <div class="row px-2 mb-2">
+        <div class="col">
+            {{complaint.event.nombre}} | {{complaint.event.plazas_ocupadas}} / {{complaint.event.plazas}}
+        </div>
+        <div class="col">
+            {{complaint.event.fecha}} {{complaint.event.hora}} | {{complaint.event.lugar}}
+        </div>
+    </div>
+    <div class="container p-3 mb-3 border-top border-bottom">
+        <p class="text-start">{{complaint.event.descripcion}}</p>
+        <div class="text-end">
+            @for (tag of complaint.event.etiquetas; track $index) {
+            <a class="link" [routerLink]="['/user','events','get']" [queryParams]="{tag:tag}">#{{tag}}</a>&nbsp;
+            }
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <div>
+            {{complaint.username}} | {{complaint.motivo}}
+        </div>    
+        <div>
+            <button type="button" (click)="addComplaintReview(false)" class="btn btn-sm btn-outline-warning me-3">IGNORAR</button>
+            <button type="button" (click)="addComplaintReview(true)" class="btn btn-sm btn-outline-danger">ELIMINAR</button>
+        </div>
+    </div>
+    @if(flag_addReviewSolicitada && flag_addReviewExitoso){
+    <div class="container bg-primary-subtle p-3 mt-3">
+        Revision agregada exitosamente.
+    </div>
+    }
+    @else if(flag_addReviewSolicitada && !flag_addReviewExitoso){
+    <div class="container bg-danger-subtle px-3 pt-3 pb-1 mt-3">
+        Ha habido algun error al intentar agregar su <u>revision</u>, posibles razones:
+        <ul>
+            <li>La revision ya ha sido agregada.</li>
+            <li>Fallo de conexion con el servidor o en el servidor.</li>
+        </ul>
+    </div>
+    }
+</div>

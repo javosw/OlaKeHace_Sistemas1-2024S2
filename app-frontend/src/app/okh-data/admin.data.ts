@@ -1,6 +1,18 @@
-export type AddReviewRoutine = {
+import { GetEvent } from "./user.data";
+
+export type AddEventReview = {
     id_evento:number;
-    fue_eliminado:boolean;
+    eliminar:boolean;
 }
 
+export type AddConplaintReview = {
+    id_evento:number;
+    username:string;
+    eliminar:boolean;
+}
 
+export type GetComplaint = {
+    event:GetEvent;
+    username:string;
+    motivo:string;
+}

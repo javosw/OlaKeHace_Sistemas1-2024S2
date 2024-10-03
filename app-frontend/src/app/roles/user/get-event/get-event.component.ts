@@ -20,11 +20,11 @@ export class GetEventComponent {
   flag_addAsistenciaSolicitada:boolean = false;
   flag_addAsistenciaExitosa: boolean = false;
 
-  input_argumento: string = '';
+  input_motivo: string = '';
 
   addDenuncia() {
     this.flag_addDenunciaSolicitada = false;
-    this.userService.addDenuncia(this.event.id_evento, this.input_argumento).subscribe({
+    this.userService.addDenuncia(this.event.id_evento, this.input_motivo).subscribe({
       next: (value: any) => {
         this.flag_addDenunciaSolicitada = true;
         this.flag_addDenunciaExitosa = true;
@@ -56,7 +56,7 @@ export class GetEventComponent {
 
 
 
-  argumentos: string[] = [
+  motivos: string[] = [
     'Interacciones falsas',
     'Suplantación de identidad',
     'Spam, prácticas engañosas y estafas',
@@ -89,8 +89,8 @@ export class GetEventComponent {
   toggleQuiereDenunciar(){
     this.flag_quiereDenunciar = !this.flag_quiereDenunciar;
   }
-  setArgumento(argumento: string) {
-    this.input_argumento = argumento;
+  setMotivo(motivo: string) {
+    this.input_motivo = motivo;
   }
 
   constructor(private userService: UserService) {

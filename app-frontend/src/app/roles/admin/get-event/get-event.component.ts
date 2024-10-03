@@ -16,11 +16,11 @@ export class GetEventComponent {
   flag_addReviewSolicitada:boolean = false;
   flag_addReviewExitoso:boolean = false;
 
-  addReview(eliminar:boolean){
+  addEventReview(eliminar:boolean){
     this.flag_addReviewSolicitada = false;
     this.flag_addReviewExitoso = false;
 
-    this.adminService.addDenuncia(this.event.id_evento,eliminar).subscribe({
+    this.adminService.addEventReview(this.event.id_evento,eliminar).subscribe({
       next: (value: any) => {
         this.flag_addReviewSolicitada = true;
         this.flag_addReviewExitoso = true;

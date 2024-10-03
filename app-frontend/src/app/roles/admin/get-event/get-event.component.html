@@ -1,10 +1,10 @@
 <div class="container p-3 mb-3 border border-info-subtle">
     <div class="row px-2 mb-2">
-        <div class="col-4">
-            <h6>{{event.nombre}}</h6>
+        <div class="col">
+            {{event.nombre}} | {{event.plazas_ocupadas}} / {{event.plazas}}
         </div>
-        <div class="col-8">
-            <h6>{{event.fecha}} {{event.hora}} | {{event.lugar}}</h6>
+        <div class="col">
+            {{event.fecha}} {{event.hora}} | {{event.lugar}}
         </div>
     </div>
     <div class="container p-3 mb-3 border-top border-bottom">
@@ -15,14 +15,9 @@
             }
         </div>
     </div>
-    <div class="d-flex justify-content-between">
-        <div>
-            {{event.plazas_ocupadas}} / {{event.plazas}}
-        </div>
-        <div>
-            <button type="button" (click)="addReview(false)" class="btn btn-sm btn-outline-success me-3">PUBLICAR</button>
-            <button type="button" (click)="addReview(true)" class="btn btn-sm btn-outline-danger">ELIMINAR</button>
-        </div>    
+    <div class="d-flex justify-content-end">
+        <button type="button" (click)="addEventReview(false)" class="btn btn-sm btn-outline-success me-3">PUBLICAR</button>
+        <button type="button" (click)="addEventReview(true)" class="btn btn-sm btn-outline-danger">ELIMINAR</button>
     </div>
     @if(flag_addReviewSolicitada && flag_addReviewExitoso){
     <div class="container bg-primary-subtle p-3 mt-3">
