@@ -1,48 +1,50 @@
-Eventos
-	[PK] id_evento:integer
-	nombre:string
-	lugar:string
-	fecha:date
-	hora:date
-	plazas:integer
-	plazas_ocupadas:integer
-	descripcion:string
-	link:string
-	
-EventoEtiquetas
-	[PK,UK] Eventos.id_evento
-	[PK] etiqueta:string
+okh:DATABASE {
+	eventos:TABLE
+		[PK,AI] id_evento:integer
+		nombre:string
+		lugar:string
+		fecha:date
+		hora:date
+		plazas:integer
+		plazas_ocupadas:integer
+		descripcion:string
+		link:string
+		
+	evento_etiquetas:TABLE
+		[PK,UK] eventos.id_evento
+		[PK] etiqueta:string
 
-EventoAsistencias
-	Eventos.id_evento
-	Clientes.username
+	evento_asistencias:TABLE
+		eventos.id_evento
+		clientes.username
 
-EventoDenuncias
-	[PK] Eventos.id_evento
-	conteo_denuncias:number
-	eliminar:bool
+	evento_denuncias:TABLE
+		[PK] eventos.id_evento
+		conteo_denuncias:number
+		eliminar:bool
 
-RevisionesPorRutina
-	[PK] Eventos.id_evento
-	fue_revisado:bool
+	revisiones_por_rutina:TABLE
+		[PK] eventos.id_evento
+		fue_revisado:bool
 
-RevisionesPorDenuncia
-	[PK] Eventos.id_evento
-	[PK] Clientes.username
-	motivo:string
-	fue_revisado:bool
-	Administradores.username
+	revisiones_por_denuncia:TABLE
+		[PK] eventos.id_evento
+		[PK] clientes.username
+		motivo:string
+		fue_revisado:bool
+		Administradores.username
 
-Usuarios
-	[PK] username
-	password
+	usuarios:TABLE
+		[PK] username:string
+		password
 
-Clientes
-	[PK] Usuarios.username
-	eventos_aprobados
-	eventos_eliminados
-	eventos_publicados
-	tiene_sancion
+	clientes:TABLE
+		[PK] Usuarios.username
+		eventos_aprobados
+		eventos_eliminados
+		eventos_publicados
+		tiene_sancion
 
-Administradores
-	[PK] Usuarios.username
+	administradores:TABLE
+		[PK] Usuarios.username
+}

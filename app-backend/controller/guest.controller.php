@@ -7,7 +7,7 @@ class GuestController
         header('HTTP/1.1 200 @guest.controller.php');
         if($username == 'admin'){
             $_SESSION['username'] ='admin';
-            $_SESSION['rol'] = 'admin';            
+            $_SESSION['rol'] = 'admin';
             echo '{"username":"admin","rol":"admin"}';
         }
         else if($username == 'user'){
@@ -23,9 +23,7 @@ class GuestController
             $user_data = GuestModel::getUser($username, $password);
 
             $_SESSION['username'] = $user_data['username'];
-            $_SESSION['nombre'] = $user_data['nombre'];
             $_SESSION['rol'] = $user_data['rol'];
-            $_SESSION['sucursal'] = $user_data['id_sucursal'];
 
             header('HTTP/1.1 200 @guest.controller.php');
             echo json_encode($user_data);

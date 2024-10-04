@@ -22,8 +22,6 @@ class GuestModel{
             $empleado = array(
                 "username" => $row['username'],
                 "rol"      => $row['rol'],
-                "nombre"   => $row['nombre'],
-                'sucursal' => $row['id_sucursal']
             );
 
             $my_pdo->commit();
