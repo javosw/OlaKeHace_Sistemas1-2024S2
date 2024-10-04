@@ -1,4 +1,4 @@
-export let api_GuestEntrar:string = '';
+export let api_GuestEntrar:string = 'http://localhost:4201/entrar';
 export let api_GuestGetUsername:string = '';
 export let api_GuestAddUser:string = '';
 

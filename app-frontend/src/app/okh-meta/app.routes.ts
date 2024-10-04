@@ -6,6 +6,7 @@ import { GetNotifsComponent as UserGetNotifs } from '../roles/user/get-notifs/ge
 import { BoardComponent as AdminBoard } from '../roles/admin/board/board.component';
 import { GetComplaintsComponent as AdminGetComplaints} from '../roles/admin/get-complaints/get-complaints.component';
 import { GetEventsComponent as AdminGetEvents } from '../roles/admin/get-events/get-events.component'; 
+import { BoardComponent } from '../test/board/board.component';
 
 export const routes: Routes = [
     { 
@@ -25,5 +26,5 @@ export const routes: Routes = [
             { path:'complaints', component: AdminGetComplaints },
         ]
     },
-    { path: 'test', component: UserBoard },
+    { path: 'test/board', component: BoardComponent },
 ];

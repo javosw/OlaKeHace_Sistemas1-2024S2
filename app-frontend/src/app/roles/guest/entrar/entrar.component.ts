@@ -45,8 +45,7 @@ export class EntrarComponent {
       },
       error: (error) => {
         this.flag_fueFormEnviado = true;
-        //this.authService.hasSession.next(false); @test(add)
-        this.authService.flag_hasSession.next(true); // @test(del)
+        this.authService.flag_hasSession.next(false);
       }
     });
   }
