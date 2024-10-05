@@ -12,23 +12,21 @@ class GuestModel{
 
             $query;
             if($rol == 'user'){
-                $query = "SELECT username,password FROM clientes WHERE username=:username AND password=:password";
-
+                $query = "SELECT username FROM clientes WHERE username=:username AND password=:password";
             }
             else if($rol == 'admin'){
-                $query = "SELECT username,password FROM administradores WHERE username=:username AND password=:password";
+                $query = "SELECT username FROM administradores WHERE username=:username AND password=:password";
             }
             $stmt = $my_pdo->prepare($query);
             $stmt->bindParam(':username',$username);
             $stmt->bindParam(':password',$password);
 
-            if(!$stmt->execute()) { throw new Exception(); }
+            if(!$stmt->execute()) { return null; }
 
             $row = $stmt->fetch();
 
             $empleado = array(
                 "username" => $row['username'],
-                "rol"      => $rol,
             );
 
             $my_pdo->commit();
@@ -41,6 +39,7 @@ class GuestModel{
         finally{
             $my_pdo = null;
         }
+        return null;
 
     }
 

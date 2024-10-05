@@ -54,10 +54,6 @@ header('HTTP/1.1 401 @josq');
 echo '{"http":"401"}';
 */
 $uri = $_SERVER['REQUEST_URI'];
-if (preg_match('/^\/test/', $uri)) {
-    echo '@test';
-    exit();
-}
 if (preg_match('/^\/okh\/entrar/', $uri)) {
     require_once __DIR__ . '/controller/guest.controller.php';
 

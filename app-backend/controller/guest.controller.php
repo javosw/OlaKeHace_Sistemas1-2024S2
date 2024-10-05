@@ -21,12 +21,15 @@ class GuestController
 
         try {
             $usuario = GuestModel::getUsuario($username, $password, $rol);
+            if (is_null($usuario['username'])) {
+                throw new Exception();
+            }
 
             $_SESSION['username'] = $usuario['username'];
-            $_SESSION['rol'] = $usuario['rol'];
+            $_SESSION['rol'] = $rol;
 
             header('HTTP/1.1 200 @guest.controller.php');
-            echo json_encode($usuario);
+            echo '{"username":"' . $usuario['username'] . '"}';
 
             exit();
         } catch (\Throwable $th) {
@@ -34,13 +37,10 @@ class GuestController
 
             header('HTTP/1.1 401 @guest.controller.php');
             echo '{"http":"401","at":"guest.controller.php"}';
-            // redireccionar o status=unautorized
-            // otra opcion: llenar los campos faltantes
 
             exit();
         }
     }
-
 }
 
 
