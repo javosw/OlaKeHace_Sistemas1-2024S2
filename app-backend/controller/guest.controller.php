@@ -2,9 +2,9 @@
 
 class GuestController
 {
-    public static function entrar($username, $password)
+    public static function entrar($username, $password, $rol)
     {
-        header('HTTP/1.1 200 @guest.controller.php');
+        /*header('HTTP/1.1 200 @guest.controller.php');
         if($username == 'admin'){
             $_SESSION['username'] ='admin';
             $_SESSION['rol'] = 'admin';
@@ -15,18 +15,18 @@ class GuestController
             $_SESSION['rol'] = 'user';            
             echo '{"username":"user","rol":"user"}';
         }
-        exit();
+        exit();*/
 
         require_once __DIR__ . '/../model/guest.model.php';
 
         try {
-            $user_data = GuestModel::getUser($username, $password);
+            $usuario = GuestModel::getUsuario($username, $password, $rol);
 
-            $_SESSION['username'] = $user_data['username'];
-            $_SESSION['rol'] = $user_data['rol'];
+            $_SESSION['username'] = $usuario['username'];
+            $_SESSION['rol'] = $usuario['rol'];
 
             header('HTTP/1.1 200 @guest.controller.php');
-            echo json_encode($user_data);
+            echo json_encode($usuario);
 
             exit();
         } catch (\Throwable $th) {
@@ -40,6 +40,7 @@ class GuestController
             exit();
         }
     }
+
 }
 
 

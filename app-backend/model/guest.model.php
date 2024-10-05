@@ -2,7 +2,7 @@
 
 class GuestModel{
     
-    public static function getUser($username,$password){
+    public static function getUsuario($username,$password,$rol){
         require_once __DIR__.'/MiConexion.php';
 
         $my_pdo = CustomPDO::paraAdmin();
@@ -10,7 +10,14 @@ class GuestModel{
         try {
             $my_pdo->beginTransaction();
 
-            $query = "SELECT * FROM usuarios WHERE username=:username AND password=:password";
+            $query;
+            if($rol == 'user'){
+                $query = "SELECT username,password FROM clientes WHERE username=:username AND password=:password";
+
+            }
+            else if($rol == 'admin'){
+                $query = "SELECT username,password FROM administradores WHERE username=:username AND password=:password";
+            }
             $stmt = $my_pdo->prepare($query);
             $stmt->bindParam(':username',$username);
             $stmt->bindParam(':password',$password);
@@ -21,7 +28,7 @@ class GuestModel{
 
             $empleado = array(
                 "username" => $row['username'],
-                "rol"      => $row['rol'],
+                "rol"      => $rol,
             );
 
             $my_pdo->commit();

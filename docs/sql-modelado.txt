@@ -10,6 +10,18 @@ okh:DATABASE {
 		descripcion:string
 		link:string
 		
+	clientes:TABLE
+		[PK] username:string
+		password
+		eventos_aprobados
+		eventos_eliminados
+		eventos_publicados
+		tiene_sancion
+
+	administradores:TABLE
+		[PK] username:string
+		password
+
 	evento_etiquetas:TABLE
 		[PK,UK] eventos.id_evento
 		[PK] etiqueta:string
@@ -30,21 +42,7 @@ okh:DATABASE {
 	revisiones_por_denuncia:TABLE
 		[PK] eventos.id_evento
 		[PK] clientes.username
+		administradores.username
 		motivo:string
 		fue_revisado:bool
-		Administradores.username
-
-	usuarios:TABLE
-		[PK] username:string
-		password
-
-	clientes:TABLE
-		[PK] Usuarios.username
-		eventos_aprobados
-		eventos_eliminados
-		eventos_publicados
-		tiene_sancion
-
-	administradores:TABLE
-		[PK] Usuarios.username
 }

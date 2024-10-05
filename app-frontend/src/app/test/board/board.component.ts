@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { api_test401, api_testAdmin, api_testUser } from '../../okh-api/routes/okh.api';
 
 @Component({
   selector: 'okh-board',
@@ -13,7 +14,7 @@ export class BoardComponent {
   }
 
   admin(){
-    let url = 'http://localhost:4201/admin/test';
+    let url = api_testAdmin;
     this.http.get<any>(url).subscribe({
       next: (value:any) => {
         alert(JSON.stringify(value));
@@ -26,7 +27,7 @@ export class BoardComponent {
     });
   }
   user(){
-    let url = 'http://localhost:4201/user/test';
+    let url = api_testUser;
     this.http.get<any>(url).subscribe({
       next: (value:any) => {
         alert(JSON.stringify(value));
@@ -40,7 +41,7 @@ export class BoardComponent {
   }
 
   test401(){
-    let url = 'http://localhost:4201/401';
+    let url = api_test401;
     this.http.get<any>(url).subscribe({
       next: (value:any) => {
         alert(JSON.stringify(value));

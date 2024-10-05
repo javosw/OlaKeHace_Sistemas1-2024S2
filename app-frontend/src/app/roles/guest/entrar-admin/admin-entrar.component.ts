@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { GuestService } from '../../../okh-api/services/guest.service';
-import { EntrarApi, EntrarForm } from '../../../okh-data/auth.data';
+import { EntrarData, EntrarForm, EntrarPorRol } from '../../../okh-data/guest.data';
 import { Router } from '@angular/router';
 import { path_AdminBoard, path_UserBoard } from '../../../okh-meta/paths';
 
 @Component({
-  selector: 'okh-entrar',
+  selector: 'okh-entrar-admin',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './entrar.component.html',
+  templateUrl: './admin-entrar.component.html',
 })
-export class EntrarComponent {
+export class AdminEntrarComponent {
   form_entrar: FormGroup;
   flag_tieneSesion: boolean = false;
   flag_fueFormEnviado: boolean = false;
@@ -29,19 +29,15 @@ export class EntrarComponent {
 
   onSubmit() {
     this.flag_fueFormEnviado = false;
+    let form:EntrarForm = this.form_entrar.value as EntrarForm;
 
-    this.authService.addSession(this.form_entrar.value as EntrarForm).subscribe({
-      next: (value: EntrarApi) => {
+    this.authService.addAdminSession(form.username,form.password).subscribe({
+      next: (value: EntrarData) => {
         this.authService.data_session = value;
         this.flag_fueFormEnviado = true;
         this.authService.flag_hasSession.next(true);
 
-        if (value.rol == 'admin') {
-          this.router.navigate([path_AdminBoard]);
-        }
-        else if (value.rol == 'user') {
-          this.router.navigate([path_UserBoard]);
-        }
+        this.router.navigate([path_AdminBoard]);
       },
       error: (error) => {
         this.flag_fueFormEnviado = true;

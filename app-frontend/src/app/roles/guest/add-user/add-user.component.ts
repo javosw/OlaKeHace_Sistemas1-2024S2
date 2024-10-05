@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EntrarForm } from '../../../okh-data/auth.data';
+import { EntrarPorRol } from '../../../okh-data/guest.data';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GuestService } from '../../../okh-api/services/guest.service';
 
@@ -13,7 +13,7 @@ export class AddUserComponent {
   constructor(private guestService:GuestService){
   }
 
-  user:EntrarForm = { username:'',password:'' }
+  user:EntrarPorRol = { username:'',password:'',rol:'user' }
 
   username_is_available:boolean = false;
   requested_username:boolean = false;

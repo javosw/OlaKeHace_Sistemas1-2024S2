@@ -12,7 +12,9 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
 
-      if (error.status === 401 && req.url !== api_GuestEntrar) {
+      let constr401:boolean = error.status == 401;
+      let constrUser:boolean = req.url != api_GuestEntrar;
+      if (constr401 && constrUser) {
         router.navigate(['/']);
         auth.flag_hasSession.next(false);
       }
