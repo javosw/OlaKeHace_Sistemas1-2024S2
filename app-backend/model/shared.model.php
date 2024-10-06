@@ -9,7 +9,7 @@ class ShareModel{
         try {
             $my_pdo->beginTransaction();
 
-            $query = "SELECT * FROM eventos";
+            $query = "SELECT * FROM eventos WHERE plazas_ocupadas <= plazas";
             $stmt = $my_pdo->prepare($query);
 
             $stmt->execute();

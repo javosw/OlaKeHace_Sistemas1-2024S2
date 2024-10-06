@@ -54,7 +54,7 @@ export class AddEventComponent {
     lugar: '',
     fecha: '',
     hora: '',
-    plazas: -1,
+    plazas: 1,
     descripcion: '',
     url: '',
     etiquetas: ['']

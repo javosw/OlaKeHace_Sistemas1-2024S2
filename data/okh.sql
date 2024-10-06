@@ -25,10 +25,10 @@ CREATE TABLE eventos (
     lugar VARCHAR(255) NOT NULL,
     fecha DATE NOT NULL,
     hora TIME NOT NULL,
-    plazas INT NOT NULL,
-    plazas_ocupadas INT DEFAULT 0,
-    descripcion TEXT,
-    url VARCHAR(255),
+    plazas INT NOT NULL CHECK (plazas >= 2),
+    plazas_ocupadas INT DEFAULT 0 CHECK (plazas_ocupadas >= 0 AND plazas_ocupadas <= plazas),
+    descripcion TEXT NOT NULL,
+    url VARCHAR(255) NOT NULL,
 	FOREIGN KEY (username) REFERENCES clientes(username)
 );
 
