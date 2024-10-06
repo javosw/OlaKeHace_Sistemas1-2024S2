@@ -27,7 +27,7 @@
             <textarea [(ngModel)]="input_event.descripcion" class="form-control col bg-secondary-subtle"></textarea>
         </div>
         <div class="row">
-            <label class="col-3 col-form-label">Link</label>
+            <label class="col-3 col-form-label">URL</label>
             <input [(ngModel)]="input_event.url" class="col form-control bg-secondary-subtle" />
         </div>
         <div class="row">
@@ -38,4 +38,20 @@
     <div class="d-flex justify-content-end">
         <button (click)="addEvent()" class="btn btn-outline-primary">AGREGAR</button>
     </div>
+
+    @if(flag_reqSent && flag_resOk){
+    <div class="container bg-primary-subtle p-3 mt-3">
+        Evento agregado exitosamente.
+    </div>
+    }
+    @else if(flag_reqSent && !flag_resOk){
+    <div class="container bg-danger-subtle px-3 pt-3 pb-1 mt-3">
+        Ha habido algun error al intentar agregar su <u>evento</u>, posibles razones:
+        <ul>
+            <li>El evento ya ha sido agregado.</li>
+            <li>Fallo de conexion con el servidor o en el servidor.</li>
+        </ul>
+    </div>
+    }
+
 </div>

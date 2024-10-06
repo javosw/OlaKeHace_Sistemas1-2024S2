@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { api_AdminAddReviewRoutine, api_AdminGetComplaints, api_AdminGetEvents } from '../routes/okh.api';
 import { GetEvent } from '../../okh-data/user.data';
 import { AddConplaintReview, AddEventReview, GetComplaint } from '../../okh-data/admin.data';
+import { ApiResult } from '../../okh-data/api.data';
 
 @Injectable({
   providedIn: 'root'
@@ -147,12 +148,12 @@ export class AdminService {
     return this.http.get<GetComplaint[]>(url);
   }
 
-  addEventReview(id_event: number, eliminar: boolean): Observable<any> {
+  addEventReview(id_event: number, eliminar: boolean): Observable<ApiResult> {
     let form: AddEventReview = { id_evento: id_event, eliminar: eliminar };
 
     let url = api_AdminAddReviewRoutine;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(url, form, { headers: headers });
+    return this.http.post<ApiResult>(url, form, { headers: headers });
   }
 
   addComplaintReview(id_event:number,username:string,eliminar:boolean){

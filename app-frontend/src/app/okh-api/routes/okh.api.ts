@@ -3,6 +3,7 @@ export let api_GuestEntrar:string = 'http://localhost:80/okh/entrar';
 export let api_GuestGetUsername:string = '';
 export let api_GuestAddUser:string = '';
 
+export let api_UserAddEvent:string = 'http://localhost:80/okh/event/add';
 export let api_UserGetEvents:string = '';
 export let api_UserAddComplaint:string = '';
 export let api_UserAddAttendance:string = '';

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AddEvent } from '../../../okh-data/user.data';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../../okh-api/services/user.service';
 
 @Component({
   selector: 'okh-add-event',
@@ -10,9 +11,30 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class AddEventComponent {
 
+  constructor(private userService:UserService){}
+
+  flag_reqSent:boolean = false;
+  flag_resOk:boolean = false;
+
   addEvent() {
+    this.flag_reqSent = false;
+    this.flag_resOk = false;
+
     this.getHashtags();
-    alert(JSON.stringify(this.input_event));
+
+    this.userService.addEvent(this.input_event).subscribe({
+      next: (value: any) => {
+        this.flag_reqSent = true;
+        this.flag_resOk = true;
+      },
+      complete: () => {
+      },
+      error: (error: any) => {
+        this.flag_reqSent = true;
+        this.flag_resOk = false;
+      }
+    });
+    //alert(JSON.stringify(this.input_event));
   }
 
   extractHashtags = (text: string): string[] => {

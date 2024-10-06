@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+//error_log();
+
 // PARA RUTAS USAR SIEMPRE -> \\\\\
 
 // Turn off all error reporting
@@ -45,6 +47,7 @@ header("Content-Type: application/json");
 // json_decode($body) para acceder con objetos
 $raw_body = file_get_contents('php://input');
 $json_body = json_decode($raw_body);
+//error_log(print_r($json_body, true));
 
 /*
 header('HTTP/1.1 200 @josq');
@@ -61,32 +64,18 @@ if (preg_match('/^\/okh\/entrar/', $uri)) {
         GuestController::entrar($json_body->username, $json_body->password, $json_body->rol);
     }
     exit();
-} else {
-    if (preg_match('/^\/okh\/test\/401/', $uri)) {
-        header('HTTP/1.1 401 @josq');
-        echo '{"http":"401"}';
-        exit();
-    }
-    else if (preg_match('/^\/okh\/test\/user/', $uri)) {
-        header('HTTP/1.1 200 @user');
-        echo '{"http":"200"}';
-        exit();
-    }
-    else if (preg_match('/^\/okh\/test\/admin/', $uri)) {
-        header('HTTP/1.1 200 @admin');
-        echo '{"http":"200"}';
-        exit();
-    }
-    exit();
+} else if (isset($_SESSION['rol'])) {
+
     if ($_SESSION['rol'] == 'admin') {
         require_once __DIR__ . '/index/admin.index.php';
         exit();
     } else if ($_SESSION['rol'] == 'user') {
         require_once __DIR__ . '/index/user.index.php';
         exit();
-    } else {
-        header('HTTP/1.1 401 @index.php');
-        echo '{"http":"401@index.php"}';
-        exit();
     }
+} else {
+
+    header('HTTP/1.1 401 @index.php');
+    echo '{"http":"401","at":"index.php"}';
+    exit();
 }

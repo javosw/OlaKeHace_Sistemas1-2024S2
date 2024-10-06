@@ -27,7 +27,7 @@ export class GetEventComponent {
       },
       complete: () => {
       },
-      error: (error) => {
+      error: (error: any) => {
         this.flag_addReviewSolicitada = true;
         this.flag_addReviewExitoso = false;
       }

@@ -1,6 +1,16 @@
 okh:DATABASE {
+
+	clientes:TABLE
+		[PK] username:string
+		password:string
+		eventos_aprobados:number
+		eventos_eliminados:number
+		eventos_publicados:number
+		tiene_sancion:bool
+
 	eventos:TABLE
 		[PK,AI] id_evento:integer
+		clientes.username
 		nombre:string
 		lugar:string
 		fecha:date
@@ -9,18 +19,10 @@ okh:DATABASE {
 		plazas_ocupadas:integer
 		descripcion:string
 		link:string
-		
-	clientes:TABLE
-		[PK] username:string
-		password
-		eventos_aprobados
-		eventos_eliminados
-		eventos_publicados
-		tiene_sancion
 
 	administradores:TABLE
 		[PK] username:string
-		password
+		password:string
 
 	evento_etiquetas:TABLE
 		[PK,UK] eventos.id_evento

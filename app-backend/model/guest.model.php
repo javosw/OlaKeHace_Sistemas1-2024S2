@@ -3,7 +3,7 @@
 class GuestModel{
     
     public static function getUsuario($username,$password,$rol){
-        require_once __DIR__.'/MiConexion.php';
+        require_once __DIR__.'/CustomPDO.php';
 
         $my_pdo = CustomPDO::paraAdmin();
 

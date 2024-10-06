@@ -4,19 +4,6 @@ class GuestController
 {
     public static function entrar($username, $password, $rol)
     {
-        /*header('HTTP/1.1 200 @guest.controller.php');
-        if($username == 'admin'){
-            $_SESSION['username'] ='admin';
-            $_SESSION['rol'] = 'admin';
-            echo '{"username":"admin","rol":"admin"}';
-        }
-        else if($username == 'user'){
-            $_SESSION['username'] ='user';
-            $_SESSION['rol'] = 'user';            
-            echo '{"username":"user","rol":"user"}';
-        }
-        exit();*/
-
         require_once __DIR__ . '/../model/guest.model.php';
 
         try {
