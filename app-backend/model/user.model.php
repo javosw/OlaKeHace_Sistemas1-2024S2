@@ -40,4 +40,38 @@ class UserModel
             exit();
         }
     }
+
+    static function addAttendance($json)
+    {
+        require_once __DIR__ . '/CustomPDO.php';
+
+        $my_pdo = CustomPDO::paraUser();
+
+        try {
+            $my_pdo->beginTransaction();
+
+            $query = "CALL add_asistencia(:id_evento,:username)";
+            $stmt = $my_pdo->prepare($query);
+            $stmt->bindParam(':id_evento', $json->id_evento);
+            $stmt->bindParam(':username', $_SESSION['username']);
+
+            $stmt->execute();
+
+            $row = $stmt->fetch();
+
+            $my_pdo->commit();
+
+            header('HTTP/1.1 200 @user.model.php');
+            echo '{"http":"200","at":"user.model.php"}';
+        } catch (Exception $e) {
+            $my_pdo->rollBack();
+            header('HTTP/1.1 500 @user.model.php');
+            echo '{"http":"500","at":"user.model.php"}';
+        } finally {
+            $my_pdo = null;
+            exit();
+        }
+    }
+
+
 }

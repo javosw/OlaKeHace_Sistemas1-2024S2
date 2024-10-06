@@ -9,6 +9,13 @@ if (preg_match('/^\/okh\/event\/add/', $uri)) {
         exit();
     }
 }
+else if (preg_match('/^\/okh\/event\/attendance\/add/', $uri)){
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        UserModel::addAttendance($json_body);
+        exit();
+    }
+}
 else if (preg_match('/^\/okh\/events/', $uri)){
     require_once __DIR__.'/../model/shared.model.php';
 

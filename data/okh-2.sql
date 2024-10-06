@@ -23,3 +23,23 @@ BEGIN
 END
 $$ 
 DELIMITER ;
+
+
+--CALL add_asistencia(:id_evento,:username);
+DELIMITER $$
+CREATE PROCEDURE add_asistencia(
+	IN p_id_evento INT,
+	IN p_username VARCHAR(255)
+)
+BEGIN
+	UPDATE eventos
+		SET plazas_ocupadas = plazas_ocupadas + 1
+		WHERE id_evento = p_id_evento;
+
+	INSERT INTO evento_asistencias 
+		VALUES (p_id_evento, p_username);
+END 
+$$
+DELIMITER ;
+
+
