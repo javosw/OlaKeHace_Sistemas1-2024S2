@@ -89,9 +89,6 @@ export class UserService {
   }
 
   getEvents(): Observable<GetEvent[]> {
-    return of(this.events);
-
-    // ++++++++++++++++++++++++++++++++++++++++
     let url = api_UserGetEvents;
     return this.http.get<GetEvent[]>(url);
   }
