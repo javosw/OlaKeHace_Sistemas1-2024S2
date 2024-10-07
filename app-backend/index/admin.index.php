@@ -9,6 +9,13 @@ if (preg_match('/^\/okh\/events/', $uri)){
         exit();
     }
 }
+else if (preg_match('/^\/okh\/event\/review\/add/', $uri)){
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        AdminModel::addReview($json_body);//{ id_evento: number, eliminar: boolean }
+        exit();
+    }
+}
 else {
     header('HTTP/1.1 404 @josq');
     echo '{"http":"404"}';
