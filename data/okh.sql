@@ -1,7 +1,6 @@
 CREATE DATABASE okh;
 USE okh;
 
--- Tabla clientes
 CREATE TABLE clientes (
     username VARCHAR(255) NOT NULL PRIMARY KEY,
     password VARCHAR(255) NOT NULL,
@@ -11,13 +10,11 @@ CREATE TABLE clientes (
     tiene_sancion BOOLEAN DEFAULT FALSE
 );
 
--- Tabla administradores
 CREATE TABLE administradores (
     username VARCHAR(255) NOT NULL PRIMARY KEY,
     password VARCHAR(255) NOT NULL
 );
 
--- Tabla eventos
 CREATE TABLE eventos (
     id_evento INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
@@ -29,12 +26,12 @@ CREATE TABLE eventos (
     plazas_ocupadas INT DEFAULT 0 CHECK (plazas_ocupadas >= 0 AND plazas_ocupadas <= plazas),
     descripcion TEXT NOT NULL,
     url VARCHAR(255) NOT NULL,
+	fue_revisado BOOLEAN DEFAULT FALSE,
 	conteo_denuncias INT DEFAULT 0,
 	FOREIGN KEY (username) REFERENCES clientes(username)
 );
 
--- Tabla evento_etiquetas
-CREATE TABLE evento_etiquetas (
+CREATE TABLE etiquetas (
     id_evento INT NOT NULL,
     etiqueta VARCHAR(255) NOT NULL,
     PRIMARY KEY (id_evento, etiqueta),
@@ -42,8 +39,7 @@ CREATE TABLE evento_etiquetas (
     FOREIGN KEY (id_evento) REFERENCES eventos(id_evento) ON DELETE CASCADE
 );
 
--- Tabla evento_asistencias
-CREATE TABLE evento_asistencias (
+CREATE TABLE asistencias (
     id_evento INT NOT NULL,
     username VARCHAR(255) NOT NULL,
     PRIMARY KEY (id_evento, username),
@@ -51,19 +47,10 @@ CREATE TABLE evento_asistencias (
     FOREIGN KEY (username) REFERENCES clientes(username)
 );
 
--- Tabla revisiones_por_rutina
-CREATE TABLE revisiones_por_rutina (
-    id_evento INT NOT NULL PRIMARY KEY,
-    fue_revisado BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (id_evento) REFERENCES eventos(id_evento) ON DELETE CASCADE
-);
-
--- Tabla revisiones_por_denuncia
-CREATE TABLE revisiones_por_denuncia (
+CREATE TABLE denuncias (
     id_evento INT NOT NULL,
     username VARCHAR(255) NOT NULL,
     motivo TEXT,
-    fue_revisado BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (id_evento, username),
     FOREIGN KEY (id_evento) REFERENCES eventos(id_evento) ON DELETE CASCADE,
     FOREIGN KEY (username) REFERENCES clientes(username)

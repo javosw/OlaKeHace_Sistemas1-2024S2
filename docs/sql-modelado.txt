@@ -19,30 +19,22 @@ okh:DATABASE {
 		plazas_ocupadas:integer
 		descripcion:string
 		link:string
+		conteo_denuncias:number
 
 	administradores:TABLE
 		[PK] username:string
 		password:string
 
-	evento_etiquetas:TABLE
+	etiquetas:TABLE
 		[PK,UK] eventos.id_evento
 		[PK] etiqueta:string
 
-	evento_asistencias:TABLE
+	asistencias:TABLE
 		[PK] eventos.id_evento
 		[PK] clientes.username
 
-	revisiones_por_rutina:TABLE
-		[PK] eventos.id_evento
-		fue_revisado:bool
-
-	revisiones_por_denuncia:TABLE
+	denuncias:TABLE
 		[PK] eventos.id_evento
 		[PK] clientes.username
 		motivo:string
-		fue_revisado:bool
-
-	evento_denuncias:TABLE
-		[PK] eventos.id_evento
-		conteo_denuncias:number
 }

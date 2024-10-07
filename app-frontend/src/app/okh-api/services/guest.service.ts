@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EntrarData, EntrarPorRol } from '../../okh-data/guest.data';
-import { api_GuestAddUser, api_GuestEntrar, api_GuestGetUsername, api_UserGetEvents } from '../routes/okh.api';
+import { api_GuestAddUser, api_GuestEntrar, api_GuestGetUsername, api_SharedGetEvents } from '../routes/okh.api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';

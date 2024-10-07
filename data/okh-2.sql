@@ -36,7 +36,7 @@ BEGIN
 		SET plazas_ocupadas = plazas_ocupadas + 1
 		WHERE id_evento = p_id_evento;
 
-	INSERT INTO evento_asistencias 
+	INSERT INTO asistencias 
 		VALUES (p_id_evento, p_username);
 END 
 $$
@@ -49,7 +49,7 @@ CREATE PROCEDURE add_denuncia(
 	IN p_motivo TEXT
 )
 BEGIN
-	INSERT INTO revisiones_por_denuncia(id_evento,username,motivo)
+	INSERT INTO denuncias(id_evento,username,motivo)
 		VALUES (p_id_evento, p_username, p_motivo);
 
 	UPDATE eventos

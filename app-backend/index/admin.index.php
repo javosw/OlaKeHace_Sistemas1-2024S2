@@ -1,14 +1,14 @@
 <?php
 
-if (preg_match('/^\/admin\/test/', $uri)) {
+require_once __DIR__.'/../model/admin.model.php';
+
+if (preg_match('/^\/okh\/events/', $uri)){
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        echo '{"admin":"t1"}';
+        AdminModel::getEvents();
         exit();
     }
-    header('HTTP/1.1 404 @josq');
-    echo '{"http":"404"}';
-} 
+}
 else {
     header('HTTP/1.1 404 @josq');
     echo '{"http":"404"}';

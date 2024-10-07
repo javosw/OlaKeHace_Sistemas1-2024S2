@@ -133,13 +133,6 @@ export class AdminService {
     },
   ]
 
-  getEvents(): Observable<GetEvent[]> {
-    return of(this.events);
-
-    // ++++++++++++++++++++++++++++++++++++++++
-    let url = api_AdminGetEvents;
-    return this.http.get<GetEvent[]>(url);
-  }
 
   getComplaints(): Observable<GetComplaint[]> {
     return of(this.complaints);

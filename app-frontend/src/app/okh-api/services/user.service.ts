@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { api_UserAddAttendance, api_UserAddComplaint, api_UserAddEvent, api_UserGetEvents } from '../routes/okh.api';
+import { api_UserAddAttendance, api_UserAddComplaint, api_UserAddEvent, api_SharedGetEvents } from '../routes/okh.api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
@@ -86,11 +86,6 @@ export class UserService {
       const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   
       return this.http.post<ApiResult>(url, form, {headers:httpHeaders});  
-  }
-
-  getEvents(): Observable<GetEvent[]> {
-    let url = api_UserGetEvents;
-    return this.http.get<GetEvent[]>(url);
   }
 
 }
