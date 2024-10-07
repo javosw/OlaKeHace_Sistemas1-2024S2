@@ -5,7 +5,7 @@ export let api_GuestAddUser:string = '';
 
 export let api_UserAddEvent:string = 'http://localhost:80/okh/event/add';
 export let api_UserGetEvents:string = 'http://localhost:80/okh/events';
-export let api_UserAddComplaint:string = '';
+export let api_UserAddComplaint:string = 'http://localhost:80/okh/event/complaint/add';
 export let api_UserAddAttendance:string = 'http://localhost:80/okh/event/attendance/add';
 
 export let api_AdminGetEvents:string = '';

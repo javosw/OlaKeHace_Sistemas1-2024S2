@@ -29,13 +29,8 @@ okh:DATABASE {
 		[PK] etiqueta:string
 
 	evento_asistencias:TABLE
-		eventos.id_evento
-		clientes.username
-
-	evento_denuncias:TABLE
 		[PK] eventos.id_evento
-		conteo_denuncias:number
-		eliminar:bool
+		[PK] clientes.username
 
 	revisiones_por_rutina:TABLE
 		[PK] eventos.id_evento
@@ -44,7 +39,10 @@ okh:DATABASE {
 	revisiones_por_denuncia:TABLE
 		[PK] eventos.id_evento
 		[PK] clientes.username
-		administradores.username
 		motivo:string
 		fue_revisado:bool
+
+	evento_denuncias:TABLE
+		[PK] eventos.id_evento
+		conteo_denuncias:number
 }

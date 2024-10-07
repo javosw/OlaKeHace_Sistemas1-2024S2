@@ -42,4 +42,21 @@ END
 $$
 DELIMITER ;
 
+DELIMITER $$
+CREATE PROCEDURE add_denuncia(
+	IN p_id_evento INT,
+	IN p_username VARCHAR(255),
+	IN p_motivo TEXT
+)
+BEGIN
+	INSERT INTO revisiones_por_denuncia(id_evento,username,motivo)
+		VALUES (p_id_evento, p_username, p_motivo);
+
+	UPDATE eventos
+		SET conteo_denuncias = conteo_denuncias + 1
+		WHERE id_evento = p_id_evento;
+
+END 
+$$
+DELIMITER ;
 
