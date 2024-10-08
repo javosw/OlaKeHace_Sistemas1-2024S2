@@ -116,7 +116,7 @@ class UserModel
         try {
             $my_pdo->beginTransaction();
 
-            $query = "INSERT INTO revisiones_por_denuncia(id_evento,username,motivo) VALUES (:id_evento,:username,:motivo)";
+            $query = "CALL add_denuncia(:id_evento,:username,:motivo)";
             $stmt = $my_pdo->prepare($query);
             $stmt->bindParam(':id_evento', $json->id_evento);
             $stmt->bindParam(':username', $_SESSION['username']);
