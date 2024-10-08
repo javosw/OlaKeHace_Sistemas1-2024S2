@@ -64,7 +64,8 @@ DELIMITER ;
 CREATE VIEW get_denuncias AS
 SELECT 
 	e.*,
-	d.motivo
+	d.motivo,
+	d.username AS denunciante
 FROM 
 	eventos e
 INNER JOIN 

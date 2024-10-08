@@ -39,7 +39,7 @@ export class GetComplaintComponent {
     this.flag_delComplaintReq = false;
     this.flag_delComplaintOk = false;
 
-    this.adminService.delComplaint(this.complaint.id_evento, this.complaint.username).subscribe({
+    this.adminService.delComplaint(this.complaint.id_evento, this.complaint.denunciante).subscribe({
       next: (value: any) => {
         this.flag_delComplaintReq = true;
         this.flag_delComplaintOk = true;
@@ -65,6 +65,7 @@ export class GetComplaintComponent {
     plazas_ocupadas: -1,
     descripcion: '',
     url: '',
+    denunciante:'',
     etiquetas: ['']
   };
 

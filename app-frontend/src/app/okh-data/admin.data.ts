@@ -13,4 +13,5 @@ export type AddConplaintReview = {
 
 export type GetComplaint = GetEvent & {
     motivo:string;
+    denunciante:string;
 }
