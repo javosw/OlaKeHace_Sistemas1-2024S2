@@ -18,22 +18,36 @@
     <div class="d-flex justify-content-between">
         <div>
             {{complaint.username}} | {{complaint.motivo}}
-        </div>    
+        </div>
         <div>
-            <button type="button" (click)="addComplaintReview(false)" class="btn btn-sm btn-outline-warning me-3">IGNORAR</button>
-            <button type="button" (click)="addComplaintReview(true)" class="btn btn-sm btn-outline-danger">ELIMINAR</button>
+            <button type="button" (click)="delComplaint()" class="btn btn-sm btn-outline-warning me-3">IGNORAR</button>
+            <button type="button" (click)="delEvent()" class="btn btn-sm btn-outline-danger">ELIMINAR</button>
         </div>
     </div>
-    @if(flag_addReviewSolicitada && flag_addReviewExitoso){
+    @if(flag_delComplaintReq && flag_delComplaintOk){
     <div class="container bg-primary-subtle p-3 mt-3">
-        Revision agregada exitosamente.
+        Denuncia eliminada exitosamente.
     </div>
     }
-    @else if(flag_addReviewSolicitada && !flag_addReviewExitoso){
+    @else if(flag_delComplaintReq && !flag_delComplaintOk){
     <div class="container bg-danger-subtle px-3 pt-3 pb-1 mt-3">
-        Ha habido algun error al intentar agregar su <u>revision</u>, posibles razones:
+        Ha habido algun error al intentar eliminar esta <u>denuncia</u>, posibles razones:
         <ul>
-            <li>La revision ya ha sido agregada.</li>
+            <li>La denuncia ya ha sido eliminada.</li>
+            <li>Fallo de conexion con el servidor o en el servidor.</li>
+        </ul>
+    </div>
+    }
+    @if(flag_delEventReq && flag_delEventOk){
+    <div class="container bg-primary-subtle p-3 mt-3">
+        Evento eliminado exitosamente.
+    </div>
+    }
+    @else if(flag_delEventReq && !flag_delEventOk){
+    <div class="container bg-danger-subtle px-3 pt-3 pb-1 mt-3">
+        Ha habido algun error al intentar eliminar este <u>evento</u>, posibles razones:
+        <ul>
+            <li>El evento ya ha sido eliminado.</li>
             <li>Fallo de conexion con el servidor o en el servidor.</li>
         </ul>
     </div>

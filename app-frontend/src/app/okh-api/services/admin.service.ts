@@ -1,10 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { GuestService } from './guest.service';
 import { Router } from '@angular/router';
-import { api_AdminAddReviewRoutine, api_AdminGetComplaints, api_AdminGetEvents } from '../routes/okh.api';
-import { GetEvent } from '../../okh-data/user.data';
+import { api_AdminAddReviewRoutine, api_AdminDelComplaint, api_AdminDelEvent, api_AdminGetComplaints, api_AdminGetEvents } from '../routes/okh.api';
 import { AddConplaintReview, AddEventReview, GetComplaint } from '../../okh-data/admin.data';
 import { ApiResult } from '../../okh-data/api.data';
 
@@ -14,58 +13,6 @@ import { ApiResult } from '../../okh-data/api.data';
 export class AdminService {
 
   constructor(private http: HttpClient, private router: Router, private authService: GuestService) { }
-  events = [
-    {
-      id_evento: 5,
-      nombre: 'Aniversario CUNOC',
-      lugar: 'CUNOC',
-      fecha: '2020-02-02',
-      hora: '15:40',
-      plazas: 100,
-      plazas_ocupadas: 48,
-      descripcion: 'fiesta del cunoc',
-      url: 'cunoc.edu.gt',
-      etiquetas: ['ingenieria', 'medicina', 'psicologia', 'derecho']
-    },
-    {
-      id_evento: 5,
-      nombre: 'XELAFER 2024',
-      lugar: 'Parque Central, Xela',
-      fecha: '2020-02-02',
-      hora: '15:40',
-      plazas: 15000,
-      plazas_ocupadas: 14000,
-      descripcion: 'fiesta de guatemala',
-      url: 'xela.gt',
-      etiquetas: ['independencia', 'bandas', 'feria', 'cerveza']
-    },
-    {
-      id_evento: 5,
-      nombre: 'Convivio CUNOC',
-      lugar: 'CUNOC',
-      fecha: '2020-02-02',
-      hora: '15:40',
-      plazas: 100,
-      plazas_ocupadas: 48,
-      descripcion: 'convivio del cunoc',
-      url: 'cunoc.edu.gt',
-      etiquetas: ['ingenieria', 'medicina', 'psicologia', 'derecho']
-    },
-    {
-      id_evento: 5,
-      nombre: 'Congreso Ingenieria 2024',
-      lugar: 'CUNOC',
-      fecha: '2020-02-02',
-      hora: '15:40',
-      plazas: 100,
-      plazas_ocupadas: 48,
-      descripcion: 'congreso de ingenieria',
-      url: 'cunoc.edu.gt',
-      etiquetas: ['ingenieria', 'sistemas', 'mecanica', 'industrial', 'civil', 'tecnologia']
-    },
-  ]
-
-
 
   getComplaints(): Observable<GetComplaint[]> {
     let url = api_AdminGetComplaints;
@@ -86,6 +33,17 @@ export class AdminService {
     let url = api_AdminAddReviewRoutine;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(url, form, { headers: headers });
+  }
+
+  delComplaint(id_event: number,username:string): Observable<ApiResult> {
+    let url = api_AdminDelComplaint;
+    let httpParams = new HttpParams().set('id_evento', id_event).set('username',username);
+    return this.http.delete<ApiResult>(url, { params: httpParams });
+  }
+  delEvent(id_event: number): Observable<ApiResult> {
+    let url = api_AdminDelEvent;
+    let httpParams = new HttpParams().set('id_evento', id_event);
+    return this.http.delete<ApiResult>(url, { params: httpParams });
   }
 
 }

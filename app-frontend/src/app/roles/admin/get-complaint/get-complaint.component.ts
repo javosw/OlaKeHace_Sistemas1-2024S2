@@ -13,31 +13,50 @@ export class GetComplaintComponent {
   constructor(private adminService: AdminService) {
   }
 
-  flag_addReviewSolicitada: boolean = false;
-  flag_addReviewExitoso: boolean = false;
+  flag_delEventReq: boolean = false;
+  flag_delEventOk: boolean = false;
+  delEvent() {
+    this.flag_delEventReq = false;
+    this.flag_delEventOk = false;
 
-  addComplaintReview(eliminar: boolean) {
-    this.flag_addReviewSolicitada = false;
-    this.flag_addReviewExitoso = false;
-
-    this.adminService.addComplaintReview(this.complaint.id_evento, this.complaint.username, eliminar).subscribe({
+    this.adminService.delEvent(this.complaint.id_evento).subscribe({
       next: (value: any) => {
-        this.flag_addReviewSolicitada = true;
-        this.flag_addReviewExitoso = true;
+        this.flag_delEventReq = true;
+        this.flag_delEventOk = true;
       },
       complete: () => {
       },
       error: (error) => {
-        this.flag_addReviewSolicitada = true;
-        this.flag_addReviewExitoso = false;
+        this.flag_delEventReq = true;
+        this.flag_delEventOk = false;
+      }
+    });
+  }
+
+  flag_delComplaintReq: boolean = false;
+  flag_delComplaintOk: boolean = false;
+  delComplaint() {
+    this.flag_delComplaintReq = false;
+    this.flag_delComplaintOk = false;
+
+    this.adminService.delComplaint(this.complaint.id_evento, this.complaint.username).subscribe({
+      next: (value: any) => {
+        this.flag_delComplaintReq = true;
+        this.flag_delComplaintOk = true;
+      },
+      complete: () => {
+      },
+      error: (error) => {
+        this.flag_delComplaintReq = true;
+        this.flag_delComplaintOk = false;
       }
     });
   }
 
   @Input() complaint: GetComplaint = {
+    id_evento: -1,
     username: '',
     motivo: '',
-    id_evento: -1,
     nombre: '',
     lugar: '',
     fecha: '',
@@ -47,6 +66,6 @@ export class GetComplaintComponent {
     descripcion: '',
     url: '',
     etiquetas: ['']
-};
+  };
 
 }

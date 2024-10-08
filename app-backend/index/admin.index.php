@@ -23,6 +23,22 @@ else if (preg_match('/^\/okh\/complaints/', $uri)){
         exit();
     }
 }
+else if (preg_match('/^\/okh\/complaint\/del/', $uri)){
+
+    if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+        //id_evento= &username=
+        AdminModel::delComplaint();
+        exit();
+    }
+}
+else if (preg_match('/^\/okh\/event\/del/', $uri)){
+
+    if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+        //id_evento=
+        AdminModel::delEvent();
+        exit();
+    }
+}
 else {
     header('HTTP/1.1 500 @admin.index.php');
     echo '{"http":"500","at":"admin.index.php"}';

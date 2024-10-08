@@ -12,6 +12,8 @@ export let api_UserAddAttendance:string = 'http://localhost:80/okh/event/attenda
 export let api_AdminGetEvents:string = '';
 export let api_AdminGetComplaints:string = 'http://localhost:80/okh/complaints';
 export let api_AdminAddReviewRoutine:string = 'http://localhost:80/okh/event/review/add';
+export let api_AdminDelComplaint:string = 'http://localhost:80/okh/complaint/del';
+export let api_AdminDelEvent:string = 'http://localhost:80/okh/event/del';
 
 export let api_testAdmin:string = 'http://localhost:80/okh/test/admin';
 export let api_testUser:string = 'http://localhost:80/okh/test/user';

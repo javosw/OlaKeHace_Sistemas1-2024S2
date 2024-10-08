@@ -102,9 +102,64 @@ class AdminModel{
             $my_pdo = null;
             exit();
         }
-
     }
 
+    public static function delComplaint(){
+        require_once __DIR__ . '/CustomPDO.php';
+
+        $my_pdo = CustomPDO::paraUser();
+
+        try {
+            $my_pdo->beginTransaction();
+
+            $query = "DELETE FROM denuncias WHERE id_evento=:id_evento AND username=:username";
+            $stmt = $my_pdo->prepare($query);
+            $stmt->bindParam(':id_evento', $_GET['id_evento']);
+            $stmt->bindParam(':username', $_GET['username']);
+
+            $stmt->execute();
+
+            $my_pdo->commit();
+
+            header('HTTP/1.1 200 @admin.model.php');
+            echo '{"http":"200","at":"admin.model.php"}';
+        } catch (Exception $e) {
+            $my_pdo->rollBack();
+            header('HTTP/1.1 500 @admin.model.php');
+            echo '{"http":"500","at":"admin.model.php"}';
+        } finally {
+            $my_pdo = null;
+            exit();
+        }
+    }
+
+    public static function delEvent(){
+        require_once __DIR__ . '/CustomPDO.php';
+
+        $my_pdo = CustomPDO::paraUser();
+
+        try {
+            $my_pdo->beginTransaction();
+
+            $query = "DELETE FROM eventos WHERE id_evento=:id_evento";
+            $stmt = $my_pdo->prepare($query);
+            $stmt->bindParam(':id_evento', $_GET['id_evento']);
+
+            $stmt->execute();
+
+            $my_pdo->commit();
+
+            header('HTTP/1.1 200 @admin.model.php');
+            echo '{"http":"200","at":"admin.model.php"}';
+        } catch (Exception $e) {
+            $my_pdo->rollBack();
+            header('HTTP/1.1 500 @admin.model.php');
+            echo '{"http":"500","at":"admin.model.php"}';
+        } finally {
+            $my_pdo = null;
+            exit();
+        }
+    }
 
 
 }
