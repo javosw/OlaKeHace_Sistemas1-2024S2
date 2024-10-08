@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EntrarData, EntrarPorRol } from '../../okh-data/guest.data';
-import { api_GuestAddUser, api_GuestEntrar, api_GuestGetUsername, api_SharedGetEvents } from '../routes/okh.api';
+import { EntrarData, EntrarPorRol, SessionForm } from '../../okh-data/guest.data';
+import { api_GuestAddUser, api_GuestEntrar, api_GuestGetUser, api_SharedGetEvents } from '../routes/okh.api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -33,14 +33,15 @@ export class GuestService {
     return this.http.post<EntrarData>(url, form, {headers:httpHeaders});
   }
 
-  getUsername(form:{username:string}):Observable<any>{
-    let url: string = api_GuestGetUsername;
+  getUser(username:string):Observable<any>{
+    let form = {username:username};
+    let url: string = api_GuestGetUser;
     const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post<EntrarData>(url, form, {headers:httpHeaders});
   }
 
-  addUser(form:EntrarPorRol):Observable<any>{
+  addUser(form:SessionForm):Observable<any>{
     let url: string = api_GuestAddUser;
     const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     

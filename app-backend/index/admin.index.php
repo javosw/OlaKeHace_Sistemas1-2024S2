@@ -16,6 +16,13 @@ else if (preg_match('/^\/okh\/event\/review\/add/', $uri)){
         exit();
     }
 }
+else if (preg_match('/^\/okh\/admins\/add/', $uri)){
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        AdminModel::addAdmin($json_body);
+        exit();
+    }
+}
 else if (preg_match('/^\/okh\/complaints/', $uri)){
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {

@@ -1,5 +1,5 @@
 
-export type EntrarForm = {
+export type SessionForm = {
     username:string;
     password:string;
 }

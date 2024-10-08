@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EntrarPorRol } from '../../../okh-data/guest.data';
+import { EntrarPorRol, SessionForm } from '../../../okh-data/guest.data';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GuestService } from '../../../okh-api/services/guest.service';
 
@@ -13,46 +13,46 @@ export class AddUserComponent {
   constructor(private guestService:GuestService){
   }
 
-  user:EntrarPorRol = { username:'',password:'',rol:'user' }
+  form_addUser:SessionForm = { username:'',password:'' }
 
-  username_is_available:boolean = false;
-  requested_username:boolean = false;
+  flag_getUserOk:boolean = false;
+  flag_getUserReq:boolean = false;
 
-  requested_add_user:boolean = false;
-  user_was_added:boolean = false;
+  getUser(){
+    this.flag_getUserReq = false;
+    this.flag_getUserOk = false;
 
-  getUsername(){
-    this.requested_username = false;
-    this.username_is_available = false;
-
-    this.guestService.getUsername({username:this.user.username}).subscribe({
+    this.guestService.getUser(this.form_addUser.username).subscribe({
       next: (value: any) => {
-        this.username_is_available = true;
-        this.requested_username = true;
+        this.flag_getUserOk = true;
+        this.flag_getUserReq = true;
       },
       complete: () => {
       },
       error: (error) => {
-        this.username_is_available = false;
-        this.requested_username = true;
+        this.flag_getUserOk = false;
+        this.flag_getUserReq = true;
       }
     });
   }
 
-  addUser(){
-    this.requested_add_user = false;
-    this.user_was_added = false;
+  flag_addUserReq:boolean = false;
+  flag_addUserOk:boolean = false;
 
-    this.guestService.addUser(this.user).subscribe({
+  addUser(){
+    this.flag_addUserReq = false;
+    this.flag_addUserOk = false;
+
+    this.guestService.addUser(this.form_addUser).subscribe({
       next: (value: any) => {
-        this.user_was_added = true;
-        this.requested_add_user = true;
+        this.flag_addUserOk = true;
+        this.flag_addUserReq = true;
       },
       complete: () => {
       },
       error: (error) => {
-        this.user_was_added = false;
-        this.requested_add_user = true;
+        this.flag_addUserOk = false;
+        this.flag_addUserReq = true;
       }
     });
   }

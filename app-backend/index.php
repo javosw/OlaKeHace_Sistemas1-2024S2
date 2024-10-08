@@ -57,14 +57,10 @@ header('HTTP/1.1 401 @josq');
 echo '{"http":"401"}';
 */
 $uri = $_SERVER['REQUEST_URI'];
-if (preg_match('/^\/okh\/entrar/', $uri)) {
-    require_once __DIR__ . '/controller/guest.controller.php';
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        GuestController::entrar($json_body->username, $json_body->password, $json_body->rol);
-    }
-    exit();
-} else if (isset($_SESSION['rol'])) {
+require_once __DIR__ . '/index/guest.index.php';
+
+if (isset($_SESSION['rol'])) {
 
     if ($_SESSION['rol'] == 'admin') {
         require_once __DIR__ . '/index/admin.index.php';
@@ -74,7 +70,6 @@ if (preg_match('/^\/okh\/entrar/', $uri)) {
         exit();
     }
 } else {
-
     header('HTTP/1.1 401 @index.php');
     echo '{"http":"401","at":"index.php"}';
     exit();

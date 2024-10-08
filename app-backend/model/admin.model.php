@@ -161,5 +161,66 @@ class AdminModel{
         }
     }
 
+    public static function addAdmin($json){
+        require_once __DIR__.'/CustomPDO.php';
+
+        $my_pdo = CustomPDO::paraAdmin();
+
+        try {
+            $my_pdo->beginTransaction();
+
+            $query = "INSERT INTO administradores(username,password) VALUES (:username,:password)";
+
+            $stmt = $my_pdo->prepare($query);
+            $stmt->bindParam(':username',$json->username);
+            $stmt->bindParam(':password',$json->password);
+
+            $stmt->execute();
+
+            $row = $stmt->fetch();
+
+            $my_pdo->commit();
+            header('HTTP/1.1 200 @admin.model.php');
+        } 
+        catch (Exception $e) {
+            $my_pdo->rollBack();
+            header('HTTP/1.1 500 @admin.model.php');
+        }
+        finally{
+            $my_pdo = null;
+            exit();
+        }
+    }
+
+
+    public static function getAdmin($json){
+        require_once __DIR__.'/CustomPDO.php';
+
+        $my_pdo = CustomPDO::paraAdmin();
+
+        try {
+            $my_pdo->beginTransaction();
+
+            $query = "SELECT username FROM administradores WHERE username=:username";
+
+            $stmt = $my_pdo->prepare($query);
+            $stmt->bindParam(':username',$json->username);
+
+            $stmt->execute();
+
+            $row = $stmt->fetch();
+
+            $my_pdo->commit();
+            header('HTTP/1.1 200 @admin.model.php');
+        } 
+        catch (Exception $e) {
+            $my_pdo->rollBack();
+            header('HTTP/1.1 500 @admin.model.php');
+        }
+        finally{
+            $my_pdo = null;
+            exit();
+        }
+    }
 
 }

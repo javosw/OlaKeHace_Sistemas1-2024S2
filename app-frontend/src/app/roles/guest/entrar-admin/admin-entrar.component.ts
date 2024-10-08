@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { GuestService } from '../../../okh-api/services/guest.service';
-import { EntrarData, EntrarForm, EntrarPorRol } from '../../../okh-data/guest.data';
+import { EntrarData, SessionForm, EntrarPorRol } from '../../../okh-data/guest.data';
 import { Router } from '@angular/router';
 import { path_AdminBoard, path_UserBoard } from '../../../okh-meta/paths';
 
@@ -29,7 +29,7 @@ export class AdminEntrarComponent {
 
   onSubmit() {
     this.flag_fueFormEnviado = false;
-    let form:EntrarForm = this.form_entrar.value as EntrarForm;
+    let form:SessionForm = this.form_entrar.value as SessionForm;
 
     this.authService.addAdminSession(form.username,form.password).subscribe({
       next: (value: EntrarData) => {
