@@ -3,16 +3,17 @@ export type ToggleState = {
 }
 
 export type GetEvent = {
-	id_evento:number
-	nombre:string
-	lugar:string
-	fecha:string
-	hora:string
-	plazas:number
-	plazas_ocupadas:number
-	descripcion:string
-	url:string
-	etiquetas:string[]
+	id_evento:number;
+	username:string;
+	nombre:string;
+	lugar:string;
+	fecha:string;
+	hora:string;
+	plazas:number;
+	plazas_ocupadas:number;
+	descripcion:string;
+	url:string;
+	etiquetas:string[];
 }
 
 export type AddEventTo = {

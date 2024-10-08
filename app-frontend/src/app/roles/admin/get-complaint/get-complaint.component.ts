@@ -20,7 +20,7 @@ export class GetComplaintComponent {
     this.flag_addReviewSolicitada = false;
     this.flag_addReviewExitoso = false;
 
-    this.adminService.addComplaintReview(this.complaint.event.id_evento, this.complaint.username, eliminar).subscribe({
+    this.adminService.addComplaintReview(this.complaint.id_evento, this.complaint.username, eliminar).subscribe({
       next: (value: any) => {
         this.flag_addReviewSolicitada = true;
         this.flag_addReviewExitoso = true;
@@ -37,18 +37,16 @@ export class GetComplaintComponent {
   @Input() complaint: GetComplaint = {
     username: '',
     motivo: '',
-    event: {
-      id_evento: -1,
-      nombre: '',
-      lugar: '',
-      fecha: '',
-      hora: '',
-      plazas: -1,
-      plazas_ocupadas: -1,
-      descripcion: '',
-      url: '',
-      etiquetas: ['']
-    }
-  };
+    id_evento: -1,
+    nombre: '',
+    lugar: '',
+    fecha: '',
+    hora: '',
+    plazas: -1,
+    plazas_ocupadas: -1,
+    descripcion: '',
+    url: '',
+    etiquetas: ['']
+};
 
 }

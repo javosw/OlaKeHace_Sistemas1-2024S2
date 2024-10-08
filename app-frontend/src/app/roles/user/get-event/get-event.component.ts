@@ -22,6 +22,20 @@ export class GetEventComponent {
 
   input_motivo: string = '';
 
+  @Input() event: GetEvent = {
+    id_evento: -1,
+    username: '',
+    nombre: '',
+    lugar: '',
+    fecha: '',
+    hora: '',
+    plazas: -1,
+    plazas_ocupadas: -1,
+    descripcion: '',
+    url: '',
+    etiquetas: ['']
+  };
+
   addDenuncia() {
     this.flag_addDenunciaSolicitada = false;
     this.userService.addDenuncia(this.event.id_evento, this.input_motivo).subscribe({
@@ -53,8 +67,6 @@ export class GetEventComponent {
       }
     });
   }
-
-
 
   motivos: string[] = [
     'Interacciones falsas',
@@ -96,18 +108,5 @@ export class GetEventComponent {
   constructor(private userService: UserService) {
   }
 
-
-  @Input() event: GetEvent = {
-    id_evento: -1,
-    nombre: '',
-    lugar: '',
-    fecha: '',
-    hora: '',
-    plazas: -1,
-    plazas_ocupadas: -1,
-    descripcion: '',
-    url: '',
-    etiquetas: ['']
-  };
 
 }

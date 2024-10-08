@@ -1,16 +1,16 @@
 <div class="container p-3 mb-3 border border-info-subtle">
     <div class="row px-2 mb-2">
         <div class="col">
-            {{complaint.event.nombre}} | {{complaint.event.plazas_ocupadas}} / {{complaint.event.plazas}}
+            {{complaint.nombre}} | {{complaint.plazas_ocupadas}} / {{complaint.plazas}}
         </div>
         <div class="col">
-            {{complaint.event.fecha}} {{complaint.event.hora}} | {{complaint.event.lugar}}
+            {{complaint.fecha}} {{complaint.hora}} | {{complaint.lugar}}
         </div>
     </div>
     <div class="container p-3 mb-3 border-top border-bottom">
-        <p class="text-start">{{complaint.event.descripcion}}</p>
+        <p class="text-start">{{complaint.descripcion}}</p>
         <div class="text-end">
-            @for (tag of complaint.event.etiquetas; track $index) {
+            @for (tag of complaint.etiquetas; track $index) {
             <a class="link" [routerLink]="['/user','events','get']" [queryParams]="{tag:tag}">#{{tag}}</a>&nbsp;
             }
         </div>

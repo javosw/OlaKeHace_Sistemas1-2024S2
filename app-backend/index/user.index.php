@@ -31,6 +31,6 @@ else if (preg_match('/^\/okh\/event\/complaint\/add/', $uri)){
     }
 }
 else {
-    header('HTTP/1.1 404 @josq');
-    echo '{"http":"404","at":"user.index.php"}';
+    header('HTTP/1.1 500 @user.index.php');
+    echo '{"http":"500","at":"user.index.php"}';
 }

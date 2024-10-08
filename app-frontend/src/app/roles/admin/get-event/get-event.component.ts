@@ -36,6 +36,7 @@ export class GetEventComponent {
 
   @Input() event: GetEvent = {
     id_evento: -1,
+    username:'',
     nombre: '',
     lugar: '',
     fecha: '',

@@ -37,7 +37,6 @@ class AdminModel{
             $my_pdo = null;
             exit();
         }
-
     }
 
     public static function getEvents(){
@@ -60,17 +59,52 @@ class AdminModel{
 
             $my_pdo->commit();
 
-            header('HTTP/1.1 200 @shared.model.php');
+            header('HTTP/1.1 200 @admin.model.php');
             echo json_encode($events);
         } catch (Exception $e) {
             $my_pdo->rollBack();
-            header('HTTP/1.1 404 @shared.model.php');
-            echo '{"http":"404","at":"shared.model.php"}';
+            header('HTTP/1.1 500 @admin.model.php');
+            echo '{"http":"500","at":"admin.model.php"}';
         } finally {
             $my_pdo = null;
             exit();
         }
 
     }
+
+    public static function getComplaints(){
+        require_once __DIR__ . '/CustomPDO.php';
+
+        $my_pdo = CustomPDO::paraUser();
+
+        try {
+            $my_pdo->beginTransaction();
+
+            $query = "SELECT * FROM get_denuncias";
+            $stmt = $my_pdo->prepare($query);
+
+            $stmt->execute();
+
+            $denuncias = array();
+            while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                $denuncias[] = $row;
+            }
+
+            $my_pdo->commit();
+
+            header('HTTP/1.1 200 @admin.model.php');
+            echo json_encode($denuncias);
+        } catch (Exception $e) {
+            $my_pdo->rollBack();
+            header('HTTP/1.1 500 @admin.model.php');
+            echo '{"http":"500","at":"admin.model.php"}';
+        } finally {
+            $my_pdo = null;
+            exit();
+        }
+
+    }
+
+
 
 }

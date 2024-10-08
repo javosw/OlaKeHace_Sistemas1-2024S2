@@ -16,7 +16,14 @@ else if (preg_match('/^\/okh\/event\/review\/add/', $uri)){
         exit();
     }
 }
+else if (preg_match('/^\/okh\/complaints/', $uri)){
+
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        AdminModel::getComplaints();
+        exit();
+    }
+}
 else {
-    header('HTTP/1.1 404 @josq');
-    echo '{"http":"404"}';
+    header('HTTP/1.1 500 @admin.index.php');
+    echo '{"http":"500","at":"admin.index.php"}';
 }

@@ -66,77 +66,8 @@ export class AdminService {
   ]
 
 
-  complaints: GetComplaint[] = [
-    {
-      username: 'cangrejo',
-      motivo: 'mucho dinero',
-      event: {
-        id_evento: 5,
-        nombre: 'Aniversario CUNOC',
-        lugar: 'CUNOC',
-        fecha: '2020-02-02',
-        hora: '15:40',
-        plazas: 100,
-        plazas_ocupadas: 48,
-        descripcion: 'fiesta del cunoc',
-        url: 'cunoc.edu.gt',
-        etiquetas: ['ingenieria', 'medicina', 'psicologia', 'derecho']
-      }
-    },
-    {
-      username: 'patricio',
-      motivo: 'no hay espageti',
-      event: {
-        id_evento: 5,
-        nombre: 'XELAFER 2024',
-        lugar: 'Parque Central, Xela',
-        fecha: '2020-02-02',
-        hora: '15:40',
-        plazas: 15000,
-        plazas_ocupadas: 14000,
-        descripcion: 'fiesta de guatemala',
-        url: 'xela.gt',
-        etiquetas: ['independencia', 'bandas', 'feria', 'cerveza']
-      }
-    },
-    {
-      username: 'esponja',
-      motivo: 'no me dejan entrar',
-      event: {
-        id_evento: 5,
-        nombre: 'Convivio CUNOC',
-        lugar: 'CUNOC',
-        fecha: '2020-02-02',
-        hora: '15:40',
-        plazas: 100,
-        plazas_ocupadas: 48,
-        descripcion: 'convivio del cunoc',
-        url: 'cunoc.edu.gt',
-        etiquetas: ['ingenieria', 'medicina', 'psicologia', 'derecho']
-      }
-    },
-    {
-      username: 'calamardo',
-      motivo: 'invitaron a esponja',
-      event: {
-        id_evento: 5,
-        nombre: 'Congreso Ingenieria 2024',
-        lugar: 'CUNOC',
-        fecha: '2020-02-02',
-        hora: '15:40',
-        plazas: 100,
-        plazas_ocupadas: 48,
-        descripcion: 'congreso de ingenieria',
-        url: 'cunoc.edu.gt',
-        etiquetas: ['ingenieria', 'sistemas', 'mecanica', 'industrial', 'civil', 'tecnologia']
-      }
-    },
-  ]
-
 
   getComplaints(): Observable<GetComplaint[]> {
-    return of(this.complaints);
-    // ++++++++++++++++++++++++++++++++++++++++
     let url = api_AdminGetComplaints;
     return this.http.get<GetComplaint[]>(url);
   }

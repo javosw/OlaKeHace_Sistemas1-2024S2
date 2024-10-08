@@ -60,3 +60,12 @@ END
 $$
 DELIMITER ;
 
+--SELECT * FROM get_denuncias;
+CREATE VIEW get_denuncias AS
+SELECT 
+	e.*,
+	d.motivo
+FROM 
+	eventos e
+INNER JOIN 
+	denuncias d ON e.id_evento = d.id_evento;

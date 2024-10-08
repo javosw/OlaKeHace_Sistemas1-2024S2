@@ -10,7 +10,7 @@ export let api_UserAddComplaint:string = 'http://localhost:80/okh/event/complain
 export let api_UserAddAttendance:string = 'http://localhost:80/okh/event/attendance/add';
 
 export let api_AdminGetEvents:string = '';
-export let api_AdminGetComplaints:string = '';
+export let api_AdminGetComplaints:string = 'http://localhost:80/okh/complaints';
 export let api_AdminAddReviewRoutine:string = 'http://localhost:80/okh/event/review/add';
 
 export let api_testAdmin:string = 'http://localhost:80/okh/test/admin';

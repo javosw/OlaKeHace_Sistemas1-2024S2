@@ -11,8 +11,6 @@ export type AddConplaintReview = {
     eliminar:boolean;
 }
 
-export type GetComplaint = {
-    event:GetEvent;
-    username:string;
+export type GetComplaint = GetEvent & {
     motivo:string;
 }
