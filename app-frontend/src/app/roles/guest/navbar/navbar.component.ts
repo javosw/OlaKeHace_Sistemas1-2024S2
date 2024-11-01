@@ -7,10 +7,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  @Output() input_view = new EventEmitter<string>;
 
-  emitView(decicion:string){
-    this.input_view.emit(decicion);
+  @Output() currentView = new EventEmitter<string>;
+
+  setCurrentView(view: 'hi' | 'events' | 'client-session' | 'admin-session' | 'add-client') {
+    this.currentView.emit(view);
   }
 
 }

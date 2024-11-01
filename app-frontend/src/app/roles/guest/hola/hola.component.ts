@@ -8,11 +8,11 @@ import { AdminEntrarComponent } from '../entrar-admin/admin-entrar.component';
 @Component({
   selector: 'okh-hola',
   standalone: true,
-  imports: [NavbarComponent, CarouselComponent, AddUserComponent, UserEntrarComponent,AdminEntrarComponent],
+  imports: [NavbarComponent, CarouselComponent, AddUserComponent, UserEntrarComponent, AdminEntrarComponent],
   templateUrl: './hola.component.html',
 })
 export class HolaComponent {
-  flag_view:string = 'hola';
+  flagCurrentView: string = 'hi';
 
   constructor() {
   }

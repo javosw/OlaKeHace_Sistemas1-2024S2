@@ -5,6 +5,13 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './carousel.component.html',
+  styles: `
+  .carousel-item img {
+    max-height: 400px;
+    width: 100%;
+    object-fit: contain;
+  }
+  `
 })
 export class CarouselComponent {
 

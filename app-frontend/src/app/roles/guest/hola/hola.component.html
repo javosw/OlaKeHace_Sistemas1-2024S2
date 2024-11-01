@@ -1,14 +1,14 @@
-<okh-navbar (input_view)="flag_view = $event"></okh-navbar>
+<okh-navbar (currentView)="flagCurrentView = $event"></okh-navbar>
 
-@if (flag_view == 'hola') {
+@if (flagCurrentView == 'hi') {
 <okh-carousel></okh-carousel>
 }
-@else if(flag_view == 'entrar-user') {
+@else if(flagCurrentView == 'client-session') {
 <okh-entrar-user></okh-entrar-user>
 }
-@else if(flag_view == 'entrar-admin') {
+@else if(flagCurrentView == 'admin-session') {
 <okh-entrar-admin></okh-entrar-admin>
 }
-@else if(flag_view == 'registro') {
+@else if(flagCurrentView == 'add-client') {
 <okh-add-user></okh-add-user>
 }
