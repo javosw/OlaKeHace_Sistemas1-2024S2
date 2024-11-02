@@ -1,12 +1,6 @@
 @if(event){
-<div class="border border-info-subtle p-3 m-0 mb-3">
-    <div class="d-flex justify-content-between m-0 mb-1">
-        <span>
-            <h4>{{event.nombre}}</h4>
-        </span>
-        <span>{{event.lugar}}, {{event.fecha}} {{event.hora}}</span>
-    </div>
-    <hr class="border border-1 opacity-100 m-0 mb-2 p-0">
-    <span class="m-0 p-0">{{event.descripcion}}</span>
+<div class="container p-3 mb-3 border border-info-subtle">
+    <okh-event [event]="event"></okh-event>
+    <span>El evento inicia en: {{remainingTime}}</span>
 </div>
 }

@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { UserService } from '../../../okh-api/services/user.service';
 import { GetEvent } from '../../../okh-data/user.data';
 import { GetEventComponent } from '../../guest/get-event/get-event.component';
+import { GetAttendanceComponent } from "../get-attendance/get-attendance.component";
 
 @Component({
   selector: 'okh-get-attendances',
   standalone: true,
-  imports: [GetEventComponent],
+  imports: [GetEventComponent, GetAttendanceComponent],
   templateUrl: './get-attendances.component.html',
 })
 export class GetAttendancesComponent {
