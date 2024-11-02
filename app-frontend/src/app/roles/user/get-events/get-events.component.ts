@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { UserService } from '../../../okh-api/services/user.service';
 import { GetEvent } from '../../../okh-data/user.data';
 import { GetEventComponent } from "../get-event/get-event.component";
-import { SharedService } from '../../../okh-api/services/shared.service';
 
 @Component({
   selector: 'okh-get-events',
@@ -12,7 +11,7 @@ import { SharedService } from '../../../okh-api/services/shared.service';
 })
 export class GetEventsComponent {
 
-  constructor(private sharedService:SharedService){}
+  constructor(private userService:UserService){}
 
   data_events = new Array<GetEvent>();
   flag_wasEventsRequested: boolean  = false;
@@ -23,7 +22,7 @@ export class GetEventsComponent {
   }
 
   getEvents(){
-    this.sharedService.getEvents().subscribe({
+    this.userService.getEvents().subscribe({
       next: (value: GetEvent[]) => {
         this.data_events = value;
         this.flag_wasEventsRequested = true;

@@ -2,35 +2,35 @@
 
 require_once __DIR__.'/../model/admin.model.php';
 
-if (preg_match('/^\/okh\/events/', $uri)){
+if (preg_match('/^\/okh\/admin\/events\/get/', $uri)){
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         AdminModel::getEvents();
         exit();
     }
 }
-else if (preg_match('/^\/okh\/event\/review\/add/', $uri)){
+else if (preg_match('/^\/okh\/admin\/reviews\/add/', $uri)){
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         AdminModel::addReview($json_body);//{ id_evento: number, eliminar: boolean }
         exit();
     }
 }
-else if (preg_match('/^\/okh\/admins\/add/', $uri)){
+else if (preg_match('/^\/okh\/admin\/admins\/add/', $uri)){
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         AdminModel::addAdmin($json_body);
         exit();
     }
 }
-else if (preg_match('/^\/okh\/complaints/', $uri)){
+else if (preg_match('/^\/okh\/admin\/complaints\/get/', $uri)){
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         AdminModel::getComplaints();
         exit();
     }
 }
-else if (preg_match('/^\/okh\/complaint\/del/', $uri)){
+else if (preg_match('/^\/okh\/admin\/complaints\/del/', $uri)){
 
     if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
         //id_evento= &username=
@@ -38,7 +38,7 @@ else if (preg_match('/^\/okh\/complaint\/del/', $uri)){
         exit();
     }
 }
-else if (preg_match('/^\/okh\/event\/del/', $uri)){
+else if (preg_match('/^\/okh\/admin\/events\/del/', $uri)){
 
     if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
         //id_evento=

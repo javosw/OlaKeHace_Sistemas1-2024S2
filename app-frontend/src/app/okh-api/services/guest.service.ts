@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { EntrarData, EntrarPorRol, SessionForm } from '../../okh-data/guest.data';
-import { api_GuestAddUser, api_GuestEntrar, api_GuestGetUser, api_SharedGetEvents } from '../routes/okh.api';
+import { api_GuestAddUser, api_GuestEntrar, api_GuestGetEvents, api_GuestGetUser } from '../routes/okh.api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { GetEvent } from '../../okh-data/user.data';
 
 @Injectable({
   providedIn: 'root'
@@ -48,4 +49,10 @@ export class GuestService {
     return this.http.post<EntrarData>(url, form, {headers:httpHeaders});
 
   }
+
+  getEvents(): Observable<GetEvent[]> {
+    let url = api_GuestGetEvents;
+    return this.http.get<GetEvent[]>(url);
+  }
+
 }

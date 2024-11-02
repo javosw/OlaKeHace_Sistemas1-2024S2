@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { GuestService } from './guest.service';
 import { Router } from '@angular/router';
-import { api_AdminAddReviewRoutine, api_AdminDelComplaint, api_AdminDelEvent, api_AdminGetComplaints } from '../routes/okh.api';
+import { api_AdminAddReviewRoutine, api_AdminDelComplaint, api_AdminDelEvent, api_AdminGetComplaints, api_AdminGetEvents } from '../routes/okh.api';
 import { AddConplaintReview, AddEventReview, GetComplaint } from '../../okh-data/admin.data';
 import { ApiResult } from '../../okh-data/api.data';
+import { GetEvent } from '../../okh-data/user.data';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,12 @@ export class AdminService {
     let url = api_AdminDelEvent;
     let httpParams = new HttpParams().set('id_evento', id_event);
     return this.http.delete<ApiResult>(url, { params: httpParams });
+  }
+
+  
+  getEvents(): Observable<GetEvent[]> {
+    let url = api_AdminGetEvents;
+    return this.http.get<GetEvent[]>(url);
   }
 
 }

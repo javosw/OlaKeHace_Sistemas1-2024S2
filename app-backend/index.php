@@ -70,16 +70,6 @@ if (isset($_SESSION['rol'])) {
         exit();
     }
 } else {
-    if (preg_match('/^\/okh\/events/', $uri)) {
-        //require_once __DIR__.'/../model/guest.model.php';
-        require_once './model/guest.model.php';
-
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            GuestModel::getEvents();
-            exit();
-        }
-    }
-
     header('HTTP/1.1 401 @index.php');
     echo '{"http":"401","at":"index.php"}';
     exit();

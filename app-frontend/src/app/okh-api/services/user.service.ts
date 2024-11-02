@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { api_UserAddAttendance, api_UserAddComplaint, api_UserAddEvent, api_SharedGetEvents, api_UserGetAttendances } from '../routes/okh.api';
+import { api_UserAddAttendance, api_UserAddComplaint, api_UserAddEvent, api_UserGetAttendances, api_UserGetEvents } from '../routes/okh.api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
@@ -39,6 +39,11 @@ export class UserService {
 
   getAttendances() {
     let url = api_UserGetAttendances;
+    return this.http.get<GetEvent[]>(url);
+  }
+
+  getEvents(): Observable<GetEvent[]> {
+    let url = api_UserGetEvents;
     return this.http.get<GetEvent[]>(url);
   }
 
