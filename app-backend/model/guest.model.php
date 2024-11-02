@@ -105,6 +105,33 @@ class GuestModel{
         }
     }
 
+    public static function getEvents(){
+        require_once __DIR__ . '/CustomPDO.php';
+
+        $my_pdo = CustomPDO::paraUser();
+
+        try {
+            $query = "SELECT * FROM eventos WHERE plazas_ocupadas <= plazas AND conteo_denuncias <= 3 AND fue_revisado = true";
+            $stmt = $my_pdo->prepare($query);
+
+            $stmt->execute();
+
+            $events = array();
+            while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                $events[] = $row;
+            }
+
+            header('HTTP/1.1 200 @shared.model.php');
+            echo json_encode($events);
+        } catch (Exception $e) {
+            header('HTTP/1.1 404 @shared.model.php');
+            echo '{"http":"404","at":"shared.model.php"}';
+        } finally {
+            $my_pdo = null;
+            exit();
+        }
+
+    }
 
 
 }

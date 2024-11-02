@@ -1,0 +1,20 @@
+@if(event){
+<div class="container p-3 mb-3 border border-info-subtle">
+    <div class="row px-2 mb-2">
+        <div class="col-4">
+            <h6>{{event.nombre}}</h6>
+        </div>
+        <div class="col-8">
+            <h6>{{event.fecha}} {{event.hora}} | {{event.lugar}}</h6>
+        </div>
+    </div>
+    <div class="container p-3 mb-3 border-top border-bottom">
+        <p class="text-start">{{event.descripcion}}</p>
+        <div class="text-end">
+            @for (tag of event.etiquetas; track $index) {
+            <a class="link">#{{tag}}</a>&nbsp;
+            }
+        </div>
+    </div>
+</div>
+}

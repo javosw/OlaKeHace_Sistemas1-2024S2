@@ -11,6 +11,7 @@ export let api_SharedGetEvents:string = 'http://localhost:80/okh/events';
 export let api_UserAddEvent:string = 'http://localhost:80/okh/event/add';
 export let api_UserAddComplaint:string = 'http://localhost:80/okh/event/complaint/add';
 export let api_UserAddAttendance:string = 'http://localhost:80/okh/event/attendance/add';
+export let api_UserGetAttendances:string = 'http://localhost:80/okh/event/attendances/get';
 
 export let api_AdminGetComplaints:string = 'http://localhost:80/okh/complaints';
 export let api_AdminAddReviewRoutine:string = 'http://localhost:80/okh/event/review/add';

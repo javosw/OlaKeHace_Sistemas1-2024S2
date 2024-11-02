@@ -70,3 +70,22 @@ FROM
 	eventos e
 INNER JOIN 
 	denuncias d ON e.id_evento = d.id_evento;
+
+
+DELIMITER $$
+CREATE PROCEDURE get_asistencias(IN p_username VARCHAR(255))
+BEGIN
+	SELECT 
+		e.*
+	FROM 
+		asistencias a
+	INNER JOIN 
+		eventos e ON a.id_evento = e.id_evento
+	WHERE 
+		a.username = p_username;
+END;
+$$
+DELIMITER ;
+
+
+

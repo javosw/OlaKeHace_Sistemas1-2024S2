@@ -45,8 +45,6 @@ class AdminModel{
         $my_pdo = CustomPDO::paraUser();
 
         try {
-            $my_pdo->beginTransaction();
-
             $query = "SELECT * FROM eventos WHERE fue_revisado = false";
             $stmt = $my_pdo->prepare($query);
 
@@ -57,12 +55,10 @@ class AdminModel{
                 $events[] = $row;
             }
 
-            $my_pdo->commit();
-
             header('HTTP/1.1 200 @admin.model.php');
             echo json_encode($events);
         } catch (Exception $e) {
-            $my_pdo->rollBack();
+
             header('HTTP/1.1 500 @admin.model.php');
             echo '{"http":"500","at":"admin.model.php"}';
         } finally {

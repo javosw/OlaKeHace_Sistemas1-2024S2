@@ -3,40 +3,6 @@
 
 class UserModel
 {
-    public static function getEvents(){
-        require_once __DIR__ . '/CustomPDO.php';
-
-        $my_pdo = CustomPDO::paraUser();
-
-        try {
-            $my_pdo->beginTransaction();
-
-            $query = "SELECT * FROM eventos WHERE plazas_ocupadas <= plazas AND conteo_denuncias <= 3 AND fue_revisado = true";
-            $stmt = $my_pdo->prepare($query);
-
-            $stmt->execute();
-
-            $events = array();
-            while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-                $events[] = $row;
-            }
-
-            $my_pdo->commit();
-
-            header('HTTP/1.1 200 @shared.model.php');
-            echo json_encode($events);
-        } catch (Exception $e) {
-            $my_pdo->rollBack();
-            header('HTTP/1.1 404 @shared.model.php');
-            echo '{"http":"404","at":"shared.model.php"}';
-        } finally {
-            $my_pdo = null;
-            exit();
-        }
-
-    }
-
-
     static function addEvent($json)
     {
         require_once __DIR__ . '/CustomPDO.php';
@@ -107,6 +73,35 @@ class UserModel
         }
     }
 
+    static function getAttendances()
+    {
+        require_once __DIR__ . '/CustomPDO.php';
+
+        $my_pdo = CustomPDO::paraUser();
+
+        try {
+            $query = "CALL get_asistencias(:username)";
+            $stmt = $my_pdo->prepare($query);
+            $stmt->bindParam(':username', $_SESSION['username']);
+
+            $stmt->execute();
+
+            $events = array();
+            while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                $events[] = $row;
+            }
+
+            header('HTTP/1.1 200');
+            echo json_encode($events);
+        } catch (Exception $e) {
+            header('HTTP/1.1 404');
+            echo '{"okh":"404@getAttendances"}';
+        } finally {
+            $my_pdo = null;
+            exit();
+        }
+    }
+
     static function addComplaint($json)
     {
         require_once __DIR__ . '/CustomPDO.php';
@@ -139,5 +134,4 @@ class UserModel
             exit();
         }
     }
-
 }
