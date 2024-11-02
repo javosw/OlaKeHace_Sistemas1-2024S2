@@ -2,11 +2,12 @@ import { Component, Input } from '@angular/core';
 import { GetComplaint } from '../../../okh-data/admin.data';
 import { AdminService } from '../../../okh-api/services/admin.service';
 import { RouterLink } from '@angular/router';
+import { EventComponent } from "../../multi/event/event.component";
 
 @Component({
   selector: 'okh-complaint',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, EventComponent],
   templateUrl: './get-complaint.component.html',
 })
 export class GetComplaintComponent {
@@ -16,6 +17,7 @@ export class GetComplaintComponent {
   flag_delEventReq: boolean = false;
   flag_delEventOk: boolean = false;
   delEvent() {
+    if (!this.complaint) { return }
     this.flag_delEventReq = false;
     this.flag_delEventOk = false;
 
@@ -36,6 +38,7 @@ export class GetComplaintComponent {
   flag_delComplaintReq: boolean = false;
   flag_delComplaintOk: boolean = false;
   delComplaint() {
+    if (!this.complaint) { return }
     this.flag_delComplaintReq = false;
     this.flag_delComplaintOk = false;
 
@@ -53,20 +56,6 @@ export class GetComplaintComponent {
     });
   }
 
-  @Input() complaint: GetComplaint = {
-    id_evento: -1,
-    username: '',
-    motivo: '',
-    nombre: '',
-    lugar: '',
-    fecha: '',
-    hora: '',
-    plazas: -1,
-    plazas_ocupadas: -1,
-    descripcion: '',
-    url: '',
-    denunciante:'',
-    etiquetas: ['']
-  };
+  @Input() complaint: GetComplaint | null = null;
 
 }

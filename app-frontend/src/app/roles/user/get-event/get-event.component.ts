@@ -3,11 +3,12 @@ import { GetEvent } from '../../../okh-data/user.data';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../../okh-api/services/user.service';
+import { EventComponent } from '../../multi/event/event.component';
 
 @Component({
-  selector: 'okh-event',
+  selector: 'okh-get-event',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, EventComponent],
   templateUrl: './get-event.component.html',
 })
 export class GetEventComponent {
@@ -17,26 +18,15 @@ export class GetEventComponent {
   flag_addDenunciaSolicitada: boolean = false;
   flag_addDenunciaExitosa: boolean = false;
 
-  flag_addAsistenciaSolicitada:boolean = false;
+  flag_addAsistenciaSolicitada: boolean = false;
   flag_addAsistenciaExitosa: boolean = false;
 
   input_motivo: string = '';
 
-  @Input() event: GetEvent = {
-    id_evento: -1,
-    username: '',
-    nombre: '',
-    lugar: '',
-    fecha: '',
-    hora: '',
-    plazas: -1,
-    plazas_ocupadas: -1,
-    descripcion: '',
-    url: '',
-    etiquetas: ['']
-  };
+  @Input() event: GetEvent | null = null;
 
   addDenuncia() {
+    if (!this.event) return;
     this.flag_addDenunciaSolicitada = false;
     this.userService.addDenuncia(this.event.id_evento, this.input_motivo).subscribe({
       next: (value: any) => {
@@ -52,7 +42,8 @@ export class GetEventComponent {
     });
   }
 
-  addAsistencia(){
+  addAsistencia() {
+    if (!this.event) return;
     this.flag_addAsistenciaSolicitada = false;
     this.userService.addAsistencia(this.event.id_evento).subscribe({
       next: (value: any) => {
@@ -98,7 +89,7 @@ export class GetEventComponent {
   ]
 
 
-  toggleQuiereDenunciar(){
+  toggleQuiereDenunciar() {
     this.flag_quiereDenunciar = !this.flag_quiereDenunciar;
   }
   setMotivo(motivo: string) {

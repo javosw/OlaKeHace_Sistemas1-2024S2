@@ -1,0 +1,18 @@
+@if (event) {
+<div class="d-flex justify-content-between m-0 p-0">
+    <span>
+        <h4>{{event.nombre}}</h4>
+    </span>
+    <span>{{event.lugar}}, {{event.fecha}} {{event.hora}}</span>
+</div>
+<hr class="border border-1 opacity-100 m-0 mb-1 p-0">
+
+<div class="container m-0 mb-1 p-0">{{event.descripcion}}</div>
+@if (event.etiquetas) {
+<div class="text-end">
+    @for (tag of event.etiquetas; track tag) {
+    <a class="link" [routerLink]="['/user','events','get']" [queryParams]="{tag:tag}">#{{tag}}</a>&nbsp;
+    }
+</div>
+}
+}

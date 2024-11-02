@@ -1,20 +1,6 @@
+@if(complaint){
 <div class="container p-3 mb-3 border border-info-subtle">
-    <div class="row px-2 mb-2">
-        <div class="col">
-            {{complaint.nombre}} | {{complaint.plazas_ocupadas}} / {{complaint.plazas}}
-        </div>
-        <div class="col">
-            {{complaint.fecha}} {{complaint.hora}} | {{complaint.lugar}}
-        </div>
-    </div>
-    <div class="container p-3 mb-3 border-top border-bottom">
-        <p class="text-start">{{complaint.descripcion}}</p>
-        <div class="text-end">
-            @for (tag of complaint.etiquetas; track $index) {
-            <a class="link" [routerLink]="['/user','events','get']" [queryParams]="{tag:tag}">#{{tag}}</a>&nbsp;
-            }
-        </div>
-    </div>
+    <okh-event [event]="complaint"></okh-event>
     <div class="d-flex justify-content-between">
         <div>
             {{complaint.username}} | {{complaint.motivo}}
@@ -53,3 +39,4 @@
     </div>
     }
 </div>
+}

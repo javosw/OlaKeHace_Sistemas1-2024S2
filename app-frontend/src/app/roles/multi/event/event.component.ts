@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { GetEvent } from '../../../okh-data/user.data';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'okh-get-attendance',
+  selector: 'okh-event',
   standalone: true,
-  imports: [],
-  templateUrl: './get-attendance.component.html',
+  imports: [RouterLink],
+  templateUrl: './event.component.html',
 })
-export class GetAttendanceComponent {
-
+export class EventComponent {
   @Input() event: GetEvent | null = null;
 
   constructor() {

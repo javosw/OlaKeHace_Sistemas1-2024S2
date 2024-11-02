@@ -1,26 +1,10 @@
+@if(event){
 <div class="container p-3 mb-3 border border-info-subtle">
-    <div class="row px-2 mb-2">
-        <div class="col-4">
-            <h6>{{event.nombre}}</h6>
-        </div>
-        <div class="col-8">
-            <h6>{{event.fecha}} {{event.hora}} | {{event.lugar}}</h6>
-        </div>
-    </div>
-    <div class="container p-3 mb-3 border-top border-bottom">
-        <p class="text-start">{{event.descripcion}}</p>
-        <div class="text-end">
-            @for (tag of event.etiquetas; track $index) {
-            <a class="link" [routerLink]="['/user','events','get']" [queryParams]="{tag:tag}">#{{tag}}</a>&nbsp;
-            }
-        </div>
-    </div>
-    <div class="d-flex justify-content-between">
+    <okh-event [event]="event"></okh-event>
+    <div class="d-flex justify-content-end">
         <button type="button" class="btn btn-sm btn-outline-danger" (click)="toggleQuiereDenunciar()">DENUNCIAR</button>
-        <div>
-            {{event.plazas_ocupadas}} / {{event.plazas}}
-            <button type="button" (click)="addAsistencia()" class="btn btn-sm btn-outline-light ms-3">ASISTIR</button>
-        </div>
+        <button type="button" (click)="addAsistencia()" class="btn btn-sm btn-outline-light ms-3">ASISTIR
+            ({{event.plazas_ocupadas}}/{{event.plazas}})</button>
     </div>
     @if(flag_quiereDenunciar){
     <div class="d-flex justify-content-between mt-3">
@@ -62,3 +46,4 @@
     </div>
     }
 </div>
+}
