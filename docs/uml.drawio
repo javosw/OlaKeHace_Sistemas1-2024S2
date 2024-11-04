@@ -636,12 +636,12 @@
     </mxGraphModel>
   </diagram>
   <diagram id="BM1pDJw74z0li_nbnO96" name="Page-4">
-    <mxGraphModel dx="794" dy="528" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1034" dy="528" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="44Spu0XgKiEM1tmUy95Z-9" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="510" y="60" width="160" height="130" as="geometry" />
+          <mxGeometry x="740" y="140" width="160" height="130" as="geometry" />
         </mxCell>
         <mxCell id="44Spu0XgKiEM1tmUy95Z-5" value="&amp;lt;&amp;lt;database system&amp;gt;&amp;gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;MariaDB&lt;/div&gt;" style="verticalAlign=top;align=center;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;fontFamily=Sofia Sans Semi Condensed;fontSize=14;" parent="44Spu0XgKiEM1tmUy95Z-9" vertex="1">
           <mxGeometry width="160" height="130" as="geometry" />
@@ -649,49 +649,34 @@
         <mxCell id="44Spu0XgKiEM1tmUy95Z-6" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;okh-db" style="html=1;whiteSpace=wrap;" parent="44Spu0XgKiEM1tmUy95Z-9" vertex="1">
           <mxGeometry x="20" y="60" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="44Spu0XgKiEM1tmUy95Z-10" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="240" y="110" width="170" height="130" as="geometry" />
+        <mxCell id="ckX4uRRSOzQhY3dCnuSE-1" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="440" y="325" width="160" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="44Spu0XgKiEM1tmUy95Z-1" value="&amp;lt;&amp;lt;web server&amp;gt;&amp;gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;Apache&lt;/div&gt;" style="verticalAlign=top;align=center;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;fontFamily=Sofia Sans Semi Condensed;fontSize=14;" parent="44Spu0XgKiEM1tmUy95Z-10" vertex="1">
-          <mxGeometry width="170" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="44Spu0XgKiEM1tmUy95Z-3" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;okh-backend" style="html=1;whiteSpace=wrap;" parent="44Spu0XgKiEM1tmUy95Z-10" vertex="1">
-          <mxGeometry x="25" y="60" width="110" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="44Spu0XgKiEM1tmUy95Z-11" value="" style="group" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="530" y="260" width="160" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="44Spu0XgKiEM1tmUy95Z-4" value="&amp;lt;&amp;lt;web server&amp;gt;&amp;gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;Angular CLI&lt;/div&gt;" style="verticalAlign=top;align=center;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;fontFamily=Sofia Sans Semi Condensed;fontSize=14;" parent="44Spu0XgKiEM1tmUy95Z-11" vertex="1">
+        <mxCell id="ckX4uRRSOzQhY3dCnuSE-2" value="&amp;lt;&amp;lt;web browser&amp;gt;&amp;gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;Firefox&lt;/div&gt;" style="verticalAlign=top;align=center;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;fontFamily=Sofia Sans Semi Condensed;fontSize=14;" parent="ckX4uRRSOzQhY3dCnuSE-1" vertex="1">
           <mxGeometry width="160" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="44Spu0XgKiEM1tmUy95Z-2" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;okh-frontend" style="html=1;whiteSpace=wrap;" parent="44Spu0XgKiEM1tmUy95Z-11" vertex="1">
+        <mxCell id="ckX4uRRSOzQhY3dCnuSE-3" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;okh-webapp" style="html=1;whiteSpace=wrap;" parent="ckX4uRRSOzQhY3dCnuSE-1" vertex="1">
           <mxGeometry x="20" y="60" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="44Spu0XgKiEM1tmUy95Z-8" value="&amp;lt;&amp;lt;protocol&amp;gt;&amp;gt;&lt;br&gt;TCP/IP" style="endArrow=none;html=1;rounded=0;" parent="1" source="44Spu0XgKiEM1tmUy95Z-6" target="44Spu0XgKiEM1tmUy95Z-3" edge="1">
+        <mxCell id="ckX4uRRSOzQhY3dCnuSE-4" value="&amp;lt;&amp;lt;protocol&amp;gt;&amp;gt;&lt;br&gt;TCP/IP" style="endArrow=none;html=1;rounded=0;" parent="1" source="44Spu0XgKiEM1tmUy95Z-1" target="ckX4uRRSOzQhY3dCnuSE-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="580" y="370" as="sourcePoint" />
-            <mxPoint x="630" y="320" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="ckX4uRRSOzQhY3dCnuSE-1" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="170" y="340" width="160" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="ckX4uRRSOzQhY3dCnuSE-2" value="&amp;lt;&amp;lt;web browser&amp;gt;&amp;gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;Firefox&lt;/div&gt;" style="verticalAlign=top;align=center;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;fontFamily=Sofia Sans Semi Condensed;fontSize=14;" vertex="1" parent="ckX4uRRSOzQhY3dCnuSE-1">
-          <mxGeometry width="160" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="ckX4uRRSOzQhY3dCnuSE-3" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;okh-webapp" style="html=1;whiteSpace=wrap;" vertex="1" parent="ckX4uRRSOzQhY3dCnuSE-1">
-          <mxGeometry x="20" y="60" width="110" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="ckX4uRRSOzQhY3dCnuSE-4" value="&amp;lt;&amp;lt;protocol&amp;gt;&amp;gt;&lt;br&gt;TCP/IP" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="44Spu0XgKiEM1tmUy95Z-1" target="ckX4uRRSOzQhY3dCnuSE-2">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="540" y="165" as="sourcePoint" />
+            <mxPoint x="390" y="300" as="sourcePoint" />
             <mxPoint x="385" y="195" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ckX4uRRSOzQhY3dCnuSE-5" value="&amp;lt;&amp;lt;protocol&amp;gt;&amp;gt;&lt;br&gt;TCP/IP" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="44Spu0XgKiEM1tmUy95Z-4" target="ckX4uRRSOzQhY3dCnuSE-2">
+        <mxCell id="44Spu0XgKiEM1tmUy95Z-1" value="&amp;lt;&amp;lt;web server&amp;gt;&amp;gt;&lt;div style=&quot;font-size: 14px;&quot;&gt;Apache&lt;/div&gt;" style="verticalAlign=top;align=center;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;fontFamily=Sofia Sans Semi Condensed;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="740" y="320" width="310" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="44Spu0XgKiEM1tmUy95Z-3" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;okh-backend" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="760" y="390" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="44Spu0XgKiEM1tmUy95Z-2" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;okh-frontend" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="910" y="390" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="44Spu0XgKiEM1tmUy95Z-8" value="&amp;lt;&amp;lt;protocol&amp;gt;&amp;gt;&lt;br&gt;TCP/IP" style="endArrow=none;html=1;rounded=0;" parent="1" source="44Spu0XgKiEM1tmUy95Z-6" target="44Spu0XgKiEM1tmUy95Z-3" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="550" y="175" as="sourcePoint" />
-            <mxPoint x="395" y="205" as="targetPoint" />
+            <mxPoint x="1220" y="610" as="sourcePoint" />
+            <mxPoint x="1270" y="560" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
